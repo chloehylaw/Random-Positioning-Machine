@@ -18,7 +18,10 @@ public class GravityRow : MonoBehaviour
         InputField = GetComponentInChildren<TMP_InputField>();
         dropdown = GetComponentInChildren<TMP_Dropdown>();
     }
-
+    /// <summary>
+    /// Verifies gravity value and converts it to m/s^2.
+    /// </summary>
+    /// <returns>True if gravity value is valid.</returns>
     public bool AttemptStart()
     {
         try

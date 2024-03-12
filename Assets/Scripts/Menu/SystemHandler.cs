@@ -10,7 +10,7 @@ public class SystemHandler : MonoBehaviour
         , seconds;
     public enum GravityUnits { Newtons, MetersPerSecondSquared };
     public static SystemHandler instance;
-    public enum RotationalAlgorithm { TwoVelocities, FixedStaticIntervals, FlexibleStaticIntervals };
+    public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals };
     public float localG;
     // Start is called before the first frame update
     void Start()
