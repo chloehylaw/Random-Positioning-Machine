@@ -8,14 +8,18 @@ public class SystemHandler : MonoBehaviour
     float hours
         , minutes
         , seconds;
-    enum GravityUnits { Newtons, MetersPerSecondSquared };
-    enum RotationalAlgorithm { TwoVelocities, FixedStaticIntervals, FlexibleStaticIntervals };
+    public enum GravityUnits { Newtons, MetersPerSecondSquared };
+    public static SystemHandler instance;
+    public enum RotationalAlgorithm { TwoVelocities, FixedStaticIntervals, FlexibleStaticIntervals };
+    public float localG;
     // Start is called before the first frame update
     void Start()
     {
+        localG = 9.81f;
         if(FindObjectsOfType<SystemHandler>().Length == 1)
         {
             DontDestroyOnLoad(gameObject);
+            instance = this;
         }
         else
         {
