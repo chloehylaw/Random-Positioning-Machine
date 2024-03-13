@@ -22,6 +22,12 @@ public class StartButton : MonoBehaviour
 
     public void TryStart()
     {
-
+        if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart())
+        {
+            SystemHandler.instance.gravity = gravityRow.DesiredGravity;
+            SystemHandler.instance.endDate = timeRow.DesiredDateEnd;
+            SystemHandler.instance.algorithm = algorithmRow.DesiredAlgorithm;
+            SystemHandler.instance.HandleStart();
+        }
     }
 }

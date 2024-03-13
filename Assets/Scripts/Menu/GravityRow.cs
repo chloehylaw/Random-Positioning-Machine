@@ -9,7 +9,7 @@ public class GravityRow : MonoBehaviour
     /// <summary>
     /// Desired gravity is in m/s^2
     /// </summary>
-    float DesiredGravity { get; set; }
+    public float DesiredGravity { get; set; }
     TMPro.TMP_InputField InputField;
     TMPro.TMP_Dropdown dropdown;
     // Start is called before the first frame update
@@ -28,6 +28,8 @@ public class GravityRow : MonoBehaviour
         {
             if (dropdown.GetComponentInChildren<TMPro.TMP_Text>().text == "g")
                 DesiredGravity = float.Parse(InputField.text) * SystemHandler.instance.localG;
+            else
+                DesiredGravity = float.Parse(InputField.text);
             if (DesiredGravity > SystemHandler.instance.localG)
             {
                 InputField.selectionColor = new Color(1, 0, 0);

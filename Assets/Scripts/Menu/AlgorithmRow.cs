@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AlgorithmRow : MonoBehaviour
 {
-    SystemHandler.RotationalAlgorithm DesiredAlgorithm;
+    public SystemHandler.RotationalAlgorithm DesiredAlgorithm;
     TMPro.TMP_Dropdown dropdown;
 
     // Start is called before the first frame update

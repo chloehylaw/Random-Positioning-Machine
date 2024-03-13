@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SystemHandler : MonoBehaviour
 {
     public float gravity;
-    float hours
-        , minutes
-        , seconds;
+    public DateTime endDate;
+    public RotationalAlgorithm algorithm;
+
     public enum GravityUnits { Newtons, MetersPerSecondSquared };
     public static SystemHandler instance;
     public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals };
@@ -27,18 +30,14 @@ public class SystemHandler : MonoBehaviour
         }
     }
 
-    public void ChangeGravity(string gravity) { this.gravity = float.Parse(gravity); }
-    public void ChangeHours(float hours) { this.hours = hours; }
-    public void ChangeMinutes(float minutes) { this.minutes = minutes; }
-    public void ChangeSeconds(float seconds) { this.seconds = seconds; }
-
     public void HandleStart()
     {
-
+        if (algorithm == RotationalAlgorithm.TwoVelocities)
+            SceneManager.LoadScene("Two Velocities");
+        else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
+            SceneManager.LoadScene("Flexible Static Intervals");
+        else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
+            SceneManager.LoadScene("Fixed Static Intervals");
     }
 
-    public void ChangeScene()
-    {
-
-    }
 }

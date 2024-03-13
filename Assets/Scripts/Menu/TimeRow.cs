@@ -36,4 +36,9 @@ public class TimeRow : MonoBehaviour
         OnUpdateDesiredEndDate.Invoke(this, EventArgs.Empty);
     }
 
+    public bool AttemptStart()
+    {
+        return DesiredDateEnd != null ? true : false;
+    }
+
 }
