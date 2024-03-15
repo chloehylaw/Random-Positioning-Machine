@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellTray : MonoBehaviour
+public class TwoVelocities : MonoBehaviour
 {
 	int tick;
 	float eulerx;

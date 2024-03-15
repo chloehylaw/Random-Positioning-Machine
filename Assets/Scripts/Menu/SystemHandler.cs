@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class SystemHandler : MonoBehaviour
 {
+    /// <summary>
+    /// Gravity in m/s^2
+    /// </summary>
     public float gravity;
     public DateTime endDate;
     public RotationalAlgorithm algorithm;
@@ -14,6 +17,9 @@ public class SystemHandler : MonoBehaviour
     public enum GravityUnits { Newtons, MetersPerSecondSquared };
     public static SystemHandler instance;
     public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals };
+    /// <summary>
+    /// Local gravity in m/s^2
+    /// </summary>
     public float localG;
     // Start is called before the first frame update
     void Start()
