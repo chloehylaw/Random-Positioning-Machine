@@ -19,7 +19,7 @@ public class CellTray : MonoBehaviour
     /// <summary>
     /// Number of ticks remaining for current instruction
     /// </summary>
-    protected float commandTime;
+    public float commandTime;
 
     /// <summary>
     /// The minimum and maximum number of ticks until changing direction
@@ -46,16 +46,20 @@ public class CellTray : MonoBehaviour
 	public int innerInversionTimer, outerInversionTimer;
 	public int innerInversionOperand = 0, outerInversionOperand = 0;
 	public float innerSpeedMultiplier = (float)(1f / Math.Sqrt(5)); //kind of arbitrary irrational number just under 1
+    public bool outDone = false, inDone = false;
+	public bool stopped = false;
+	public float outerPosAtStopStart, innerPosAtStopStart;
+	public bool innerExtraLoop = false, outerExtraLoop = false;
+	public bool innerExtraLoopGiven = false, outerExtraLoopGiven = false;
 
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
 	{
 		CellTrayStart();
     }
 
     protected void CellTrayStart()
 	{
-		Time.timeScale = 10f;
 		degreesPerTick = nominalRPM * (360f * Time.fixedDeltaTime/60f);
 		innerInversionTimer = UnityEngine.Random.Range(minimumWaitUntilDirectionChange, maximumWaitUntilDirectionChange);
 		outerInversionTimer = UnityEngine.Random.Range(minimumWaitUntilDirectionChange, maximumWaitUntilDirectionChange);
@@ -72,6 +76,7 @@ public class CellTray : MonoBehaviour
 		this.innerSpeed = innerSpeed;
 		this.outerSpeed = outerSpeed;
 		commandTime = ticks;
+		stopped = false;
 	}
 
 	/// <summary>
@@ -92,6 +97,8 @@ public class CellTray : MonoBehaviour
 	protected void Stop()
 	{
 		stopping = true;
+		innerPosAtStopStart = innerPos;
+		outerPosAtStopStart = outerPos;
 		GoTo(0, 0, true);
 	}
 
@@ -110,7 +117,7 @@ public class CellTray : MonoBehaviour
 			outerInverting = true;
 			outerInversionTimer = UnityEngine.Random.Range(minimumWaitUntilDirectionChange, maximumWaitUntilDirectionChange);
 		}
-        if (commandTime > 0 && !goingTo)
+        if (commandTime > 0 && !goingTo && !stopped)
         {
             var tI = innerSpeed * degreesPerTick * innerSpeedMultiplier 
 				* (innerInverting ? Mathf.Cos(innerInversionOperand++*0.005f*Mathf.PI) : 1f)
@@ -141,95 +148,162 @@ public class CellTray : MonoBehaviour
         {
             if (stopping)
             {
-                if(outerSpeed > 0)
+				if (!outerInverted)
 				{
-					outerSpeed = outerInverted ? outerPos/360f : -outerPos/360f;
+					var s = 720f - outerPosAtStopStart - Math.Abs(desiredPosOuter - 360f);
+					if (s < 180f)
+					{
+						if (!outerExtraLoopGiven)
+							outerExtraLoop = outerExtraLoopGiven = true;
+						s += 360f;
+						Debug.Log(s);
+					}
+                    var t = 1f - ((outerPos - outerPosAtStopStart) / s);
+                    outerSpeed = t > 0.2f ? t : 0.2f;
 				}
-				if(outerSpeed < 0)
+				else
 				{
-					outerSpeed = 0;
+
 				}
-				if (innerSpeed > 0)
+				if (!innerInverted)
 				{
-                    innerSpeed = innerInverted ? innerPos / 360f : -innerPos / 360f; ;
+                    var s = 720f - outerPosAtStopStart - Math.Abs(desiredPosOuter - 360f);
+                    if (s < 180f)
+					{
+                        s += 360f;
+                        if (!innerExtraLoopGiven)
+                            innerExtraLoop = innerExtraLoopGiven = true;
+					}
+                    var t = 1f - ((innerPos - innerPosAtStopStart) / s);
+					innerSpeed = t > 0.2f ? t : 0.2f;
 				}
-				if (innerSpeed < 0)
+				else
 				{
-					innerSpeed = 0;
+
 				}
+
+    //            if(outerSpeed > 0 && !outDone)
+				//{
+				//	var prevOutSpeed = outerSpeed;
+				//	outerSpeed = Math.Abs((outerPosAtStopStart - outerPos) - Math.Abs(outerPosAtStopStart - desiredPosOuter))  / 360f;
+				//	if (Math.Abs(prevOutSpeed - outerSpeed) > 0.01f)
+				//		outerSpeed -= 0.01f;
+				//}
+				//if(outerSpeed < 0)
+				//{
+				//	outerSpeed = 0;
+				//}
+				//if (innerSpeed > 0 && !inDone)
+				//{
+				//	var prevInnerSpeed = innerSpeed;
+				//	innerSpeed = Math.Abs((innerPosAtStopStart - innerPos) - Math.Abs(innerPosAtStopStart - desiredPosInner)) / 360f;
+    //                if (Math.Abs(prevInnerSpeed - outerSpeed) > 0.01f)
+    //                    innerSpeed -= 0.01f;
+    //            }
+				//if (innerSpeed < 0)
+				//{
+				//	innerSpeed = 0;
+				//}
             }
             else
             {
                 innerSpeed = innerSpeed > 0 ? innerSpeed : 1;
                 outerSpeed = outerSpeed > 0 ? outerSpeed : 1;
             }
-            bool outDone = false, inDone = false;
-            if (outerPos != desiredPosOuter)
+            if (!(outerPos > desiredPosOuter -1 && outerPos < desiredPosOuter + 1) && !outDone)
             {
                 var tO = outerSpeed * degreesPerTick
                 * (outerInverted ? -1f : 1f);
                 transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1, 0, 0), tO);
                 outerPos = (outerPos + tO) % 360f;
             }
-            else { outDone = true; }
-            if (innerPos != desiredPosInner)
+            else 
+			{
+				if (!outerExtraLoop)
+				{
+					outDone = true;
+					outerSpeed = 0;
+				}
+                else
+                {
+                    if (!(outerPos > desiredPosOuter - 1 && outerPos < desiredPosOuter + 1))
+                        outerExtraLoop = false;
+                }
+            }
+            if (!(innerPos > desiredPosInner - 1 && innerPos < desiredPosInner + 1) && !inDone)
             {
                 var tI = innerSpeed * degreesPerTick * innerSpeedMultiplier
                 * (innerInverted ? -1f : 1f);
                 transform.Rotate(new Vector3(0, tI, 0));
                 innerPos = (innerPos + tI) % 360f;
             }
-            else { inDone = true; }
+            else 
+			{
+                if (!innerExtraLoop)
+                {
+                    inDone = true;
+                    innerSpeed = 0;
+                }
+				else
+				{
+					if (!(innerPos > desiredPosInner - 1 && innerPos < desiredPosInner + 1))
+						innerExtraLoop = false;
+				}
+            }
             if (inDone && outDone)
             {
                 goingTo = false;
+				stopped = true;
+				stopping = false;
+				outDone = false;
+				inDone = false;
             }
         }
     }
 
-	void FixedUpdate()
-	{
-		//commandTime--;
-		//if( commandTime > 0  )
-		//{
-		//	var tI = innerSpeed * degreesPerTick;
-		//	var tO = outerSpeed * degreesPerTick;
-		//	transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1,0,0), tO);
-		//	outerPos = (outerPos + tO) % 360f;
-		//	transform.Rotate(new Vector3(0, tI, 0));
-		//	innerPos += (innerPos + tI) % 360f;
-		//}
-		//else if (goingTo)
-		//{
-		//	if (stopping)
-		//	{
-  //              outerSpeed -= 0.05f;
-		//		innerSpeed -= 0.05f;
-  //          }
-		//	else
-		//	{
-		//		innerSpeed = innerSpeed > 0 ? innerSpeed : 1;
-		//		outerSpeed = outerSpeed > 0 ? outerSpeed : 1;
-		//	}
-		//	bool outDone = false, inDone = false;
-		//	if (outerPos != desiredPosOuter)
-		//	{
-		//		var tO = outerSpeed * degreesPerTick;
-		//		transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1, 0, 0), tO);
-		//		outerPos = (outerPos + tO) % 360f;
-		//	}
-		//	else { outDone = true; }
-		//	if (innerPos != desiredPosInner)
-		//	{
-  //              var tI = innerSpeed * degreesPerTick;
-  //              transform.Rotate(new Vector3(0, tI, 0));
-  //              innerPos += (innerPos + tI) % 360f;
-  //          }
-		//	else { inDone = true; }
-		//	if (inDone && outDone)
-		//	{
-		//		goingTo = false;
-		//	}
-  //      }
-	}
+	//void FixedUpdate()
+	//{
+	//	//commandTime--;
+	//	//if( commandTime > 0  )
+	//	//{
+	//	//	var tI = innerSpeed * degreesPerTick;
+	//	//	var tO = outerSpeed * degreesPerTick;
+	//	//	transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1,0,0), tO);
+	//	//	outerPos = (outerPos + tO) % 360f;
+	//	//	transform.Rotate(new Vector3(0, tI, 0));
+	//	//	innerPos += (innerPos + tI) % 360f;
+	//	//}
+	//	//else if (goingTo)
+	//	//{
+	//	//	if (stopping)
+	//	//	{
+ // //              outerSpeed -= 0.05f;
+	//	//		innerSpeed -= 0.05f;
+ // //          }
+	//	//	else
+	//	//	{
+	//	//		innerSpeed = innerSpeed > 0 ? innerSpeed : 1;
+	//	//		outerSpeed = outerSpeed > 0 ? outerSpeed : 1;
+	//	//	}
+	//	//	bool outDone = false, inDone = false;
+	//	//	if (outerPos != desiredPosOuter)
+	//	//	{
+	//	//		var tO = outerSpeed * degreesPerTick;
+	//	//		transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1, 0, 0), tO);
+	//	//		outerPos = (outerPos + tO) % 360f;
+	//	//	}
+	//	//	else { outDone = true; }
+	//	//	if (innerPos != desiredPosInner)
+	//	//	{
+ // //              var tI = innerSpeed * degreesPerTick;
+ // //              transform.Rotate(new Vector3(0, tI, 0));
+ // //              innerPos += (innerPos + tI) % 360f;
+ // //          }
+	//	//	else { inDone = true; }
+	//	//	if (inDone && outDone)
+	//	//	{
+	//	//		goingTo = false;
+	//	//	}
+ // //      }
+	//}
 }
