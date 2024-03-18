@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class FixedStaticIntervals : CellTray
+public class FixedStaticIntervals : Controller
 {
 	/// <summary>
 	/// The total interval time in seconds
@@ -22,34 +22,44 @@ public class FixedStaticIntervals : CellTray
     /// Desired gravity in proportion of g
     /// </summary>
     float g;
+	public int tick;
 	bool isStatic = false;
 
-    void Start()
+    new void Start()
 	{
+		Time.timeScale = 2.0f;
+		base.Start();
         g = SystemHandler.instance.gravity / SystemHandler.instance.localG;
         dynamicInterval = fullInterval * g;
 		staticInterval = fullInterval - dynamicInterval;
-		CellTrayStart();
-		Move(1, 1, (int)dynamicInterval * 100);
+		foreach (Motor motor in motors)
+		{
+			motor.RandomWalk();
+		}
 	}
 
-    private void FixedUpdate()
+    private void FixedUpdate()	
     {
-		if (commandTime == 0)
+		if (isStatic)
 		{
-			if (isStatic)
+			tick++;
+			if (tick >= staticInterval * (1f / Time.deltaTime))
 			{
-                Move(1, 1, (int)dynamicInterval * 100);
-				isStatic = false;
-            }
-			else
-			{
-				Stop();
-				commandTime = staticInterval * 100;
-				isStatic = true;
+				StartMotors(false);
+                isStatic = false;
+				tick = 0;
 			}
-        }
-		CellTrayFixedUpdate();
+		}
+		else
+		{
+			tick++;
+			if (tick >= dynamicInterval * (1f / Time.deltaTime))
+			{
+				StopMotors();
+				isStatic = true;
+				tick = 0;
+			}
+		}
     }
 
 }
