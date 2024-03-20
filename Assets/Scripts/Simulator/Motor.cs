@@ -38,6 +38,7 @@ public class Motor : MonoBehaviour
     public float currentPosition = 0;
     private bool goingBackwards = false;
     public int minRandomWalkInterval = 15, maxRandomWalkInterval=30;
+    public bool waitForDirectionChange = false;
 
     public void Start()
     {
@@ -50,6 +51,8 @@ public class Motor : MonoBehaviour
     /// </summary>
     public void Stop()
     {
+        if (currentSpeed != desiredSpeed)
+            waitForDirectionChange = true;
         desiredSpeed = 0;
         stop = true;
         if (currentPosition < 90 || currentPosition > 270)
@@ -93,7 +96,7 @@ public class Motor : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (!stop)
+        if (!stop || waitForDirectionChange)
         {
             randomWalkInterval--;
             if (randomWalkInterval < 0)
@@ -101,17 +104,15 @@ public class Motor : MonoBehaviour
                 ChangeDirection();
             }
 
-            transform.Rotate(axisOfRotation, currentSpeed);
-            currentPosition = Vector3.Dot(transform.localEulerAngles, axisOfRotation);
-            if (currentPosition < 0f)
-                currentPosition += 360f;
-            //UpdateMotorPosition();
-
             if (currentSpeed != desiredSpeed)
             {
                 currentSpeed += 0.01f * Mathf.Sign(desiredSpeed - currentSpeed);
                 if (Mathf.Abs(currentSpeed - desiredSpeed) < 0.02f)
                     currentSpeed = desiredSpeed;
+            }
+            if (waitForDirectionChange && currentSpeed == desiredSpeed)
+            {
+                waitForDirectionChange = false;
             }
         }
         else
@@ -122,24 +123,53 @@ public class Motor : MonoBehaviour
                 {
                     tooCloseToStop = false;
                 }
+                //transform.Rotate(axisOfRotation, currentSpeed);
+                //UpdateMotorPosition();
             }
             else if (currentPosition < 90f || currentPosition > 270f)
             {
-                currentSpeed += (degreesPerTick / 90f) * Mathf.Sign(desiredSpeed - currentSpeed);
-                if (Mathf.Abs(currentSpeed - desiredSpeed) < 0.02f)
+                if (Mathf.Abs(currentSpeed - desiredSpeed) <= 0.1f)
                 {
-                    if (currentPosition > 359.5f || currentPosition < 0.5f)
-                        currentSpeed = 0f;
+                    if (currentPosition > 359f || currentPosition < 1f)
+                    {
+                        if (currentSpeed > 0)
+                            currentSpeed = degreesPerTick * 0.01f;
+                        else
+                            currentSpeed = -degreesPerTick * 0.01f;
+                        //transform.Rotate(axisOfRotation, currentSpeed);
+                        //UpdateMotorPosition();
+                        if (currentPosition >= 360f - (degreesPerTick * 0.005f) || currentPosition <= degreesPerTick * 0.005f)
+                        {
+                            currentPosition = 0;
+                            currentSpeed = 0;
+                        }
+                        
+                    }
                     else
-                        currentSpeed = 0.1f * Mathf.Sign(currentSpeed);
+                    {
+                        if (currentSpeed > 0)
+                            currentSpeed = 0.1f;
+                        else
+                            currentSpeed = -0.1f;
+                        //transform.Rotate(axisOfRotation, currentSpeed);
+                        //UpdateMotorPosition();
+                    }
+                }
+                else
+                {
+                    currentSpeed += (degreesPerTick / 90f) * Mathf.Sign(desiredSpeed - currentSpeed);
+                    //transform.Rotate(axisOfRotation, currentSpeed);
+                    //UpdateMotorPosition();
                 }
             }
-            transform.Rotate(axisOfRotation, currentSpeed);
-            currentPosition = Vector3.Dot(transform.localEulerAngles, axisOfRotation);
-            if (currentPosition < 0f)
-                currentPosition += 360f;
-            //UpdateMotorPosition();
+            else
+            {
+                //transform.Rotate(axisOfRotation, currentSpeed);
+                //UpdateMotorPosition();
+            }
         }
+        transform.Rotate(axisOfRotation, currentSpeed);
+        UpdateMotorPosition();
     }
 
     private void UpdateMotorPosition()
