@@ -229,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8183664486386940129
@@ -12413,7 +12413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_AnchoredPosition: {x: 0, y: -0.49999237}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7220381349465810552
@@ -17569,7 +17569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3424802555722721298
@@ -18305,9 +18305,9 @@ RectTransform:
   - {fileID: 5876499862846803052}
   m_Father: {fileID: 2984955673759170983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 33.850006}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.17114258, y: 128.57776}
   m_SizeDelta: {x: 880.8, y: 67.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7687892382021893389
@@ -21092,7 +21092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.72998047, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7742175452067032149
@@ -21177,10 +21177,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3500323058270336113}
-        m_TargetAssemblyTypeName: KeyboardScript, Assembly-CSharp
-        m_MethodName: OpenKeyboard
-        m_Mode: 1
+      - m_Target: {fileID: 5794392134639619233}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -30524,7 +30524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3443326597430366231
@@ -30971,9 +30971,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2984955673759170983}
   - component: {fileID: 3500323058270336113}
-  - component: {fileID: 3228556433528935231}
   m_Layer: 5
-  m_Name: Keyboard
+  m_Name: Keyboard 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31005,7 +31004,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1024, y: 600}
+  m_SizeDelta: {x: 918.5, y: 548}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &3500323058270336113
 MonoBehaviour:
@@ -31020,34 +31019,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextField: {fileID: 4881486901308960596}
-  Keyboard: {fileID: 5865219125149921023}
+  Keyboard: {fileID: 0}
   EngLayoutSml: {fileID: 5794392134639619233}
   EngLayoutBig: {fileID: 3475003584859576043}
   EngLayoutSymb: {fileID: 6094955499077657962}
   FrLayoutSml: {fileID: 6037672013709470}
   FrLayoutBig: {fileID: 8905427902763841163}
   FrLayoutSymb: {fileID: 6632132602401663725}
---- !u!95 &3228556433528935231
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5865219125149921023}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d0193a20bb90a04baae7bde4ac779ee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5966434932469162654
 GameObject:
   m_ObjectHideFlags: 0
@@ -31671,7 +31649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3390584212114869214
@@ -35530,7 +35508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &251344841056162061
@@ -38377,7 +38355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_AnchoredPosition: {x: 0, y: -0.49999237}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3122728712248888077
@@ -49475,7 +49453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 44, y: 108}
+  m_AnchoredPosition: {x: 0, y: 108}
   m_SizeDelta: {x: 710, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7241549163349473266

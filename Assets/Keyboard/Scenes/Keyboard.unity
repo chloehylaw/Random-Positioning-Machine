@@ -317,6 +317,342 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6037672013709470, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 328162357313541781, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527721}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 347104155735962659, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrfSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 887620131234832265, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527719}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051450151912684997, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrfSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105902701699500979, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157564919735711388, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrShift
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675706458376109019, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820023028086832741, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040289955910664674, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527721}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353211119891847517, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527720}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817776311500050441, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2984955673759170983, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -409,6 +745,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475003584859576043, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500323058270336113, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: Keyboard
+      value: 
+      objectReference: {fileID: 1918892042}
     - target: {fileID: 3500323058270336113, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
       propertyPath: FrLayoutBig
       value: 
@@ -433,13 +777,645 @@ PrefabInstance:
       propertyPath: EngLayoutSymb
       value: 
       objectReference: {fileID: 1214527719}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527719}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524436843622315079, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrShift
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594613797095066381, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632341644522963867, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3651900091609224798, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 710
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696362983781933022, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527721}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872296598974435548, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885819435634235310, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212976280020936075, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354159433896723272, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595723815688984036, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527719}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805970558516858729, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989563983487612192, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707733140242936635, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527721}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747871442656306360, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794392134639619233, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824633589667056104, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824633589667056104, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 5824633589667056104, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824633589667056104, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5865219125149921023, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
       propertyPath: m_Name
       value: Keyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865219125149921023, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094955499077657962, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591657132271405995, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632132602401663725, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097960897712052240, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651966231241309551, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrCaps
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048544321123290447, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1214527719}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214619333582238631, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseFrCaps
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314711781552331419, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431741964553543520, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434373610257383556, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1918892047}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KeyboardAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150668162798999, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905427902763841163, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -456,6 +1432,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5865219125149921023, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1918892043}
+    - targetCorrespondingSourceObject: {fileID: 5865219125149921023, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1918892046}
+    - targetCorrespondingSourceObject: {fileID: 5794392134639619233, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214527726}
+    - targetCorrespondingSourceObject: {fileID: 3475003584859576043, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214527725}
+    - targetCorrespondingSourceObject: {fileID: 6094955499077657962, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214527724}
+    - targetCorrespondingSourceObject: {fileID: 6037672013709470, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214527723}
+    - targetCorrespondingSourceObject: {fileID: 8905427902763841163, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214527722}
+    - targetCorrespondingSourceObject: {fileID: 6632132602401663725, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1616448764}
   m_SourcePrefab: {fileID: 100100000, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
 --- !u!1 &1214527716 stripped
 GameObject:
@@ -487,6 +1484,132 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5794392134639619233, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
   m_PrefabInstance: {fileID: 1214527715}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1214527722
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527717}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d030f15182e3c349a0192d6cfece228, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1214527723
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45d3a98006322cc49b956cd66c9d1484, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1214527724
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57f5ac8b0ed436846bb09571cf07c59c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1214527725
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ceb907062ae79da46bd0f379969c4f46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1214527726
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527721}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30cd07b9c0e89574b9e825efac3525b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1616448764
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214527716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b1fea27b8fbea34bbab756f31e73c70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1737815044
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,11 +1741,43 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &1918892046
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918892042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d0193a20bb90a04baae7bde4ac779ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1918892047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3500323058270336113, guid: 9ac79aca8bf8d2c42950737876afa8aa, type: 3}
+  m_PrefabInstance: {fileID: 1214527715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918892042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b588419570d9394a94ff4cef1addb7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
