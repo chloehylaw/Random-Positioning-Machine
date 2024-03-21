@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Scripting.Python;
 using UnityEngine;
 
 public class Motor : MonoBehaviour
@@ -37,7 +38,8 @@ public class Motor : MonoBehaviour
     public bool tooCloseToStop = false;
     public float currentPosition = 0;
     private bool goingBackwards = false;
-    public int minRandomWalkInterval = 15, maxRandomWalkInterval=30;
+    public int minRandomWalkInterval = 15, maxRandomWalkInterval = 30;
+    public bool waitForDirectionChange = false;
 
     public void Start()
     {
@@ -50,9 +52,11 @@ public class Motor : MonoBehaviour
     /// </summary>
     public void Stop()
     {
+        if (currentSpeed != desiredSpeed)
+            waitForDirectionChange = true;
         desiredSpeed = 0;
         stop = true;
-        if (currentPosition < 90 || currentPosition > 270)
+        if ((currentPosition < 90 || currentPosition > 270) && !waitForDirectionChange)
             tooCloseToStop = true;
     }
 
@@ -65,7 +69,7 @@ public class Motor : MonoBehaviour
         desiredSpeed = !goingBackwards ? degreesPerTick : -degreesPerTick;
         stop = false;
         if (resetInterval)
-            randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f/Time.fixedDeltaTime), maxRandomWalkInterval * (int) (1f/Time.fixedDeltaTime));
+            randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f / Time.fixedDeltaTime), maxRandomWalkInterval * (int)(1f / Time.fixedDeltaTime));
     }
 
     /// <summary>
@@ -86,14 +90,14 @@ public class Motor : MonoBehaviour
     /// </summary>
     private void ChangeDirection()
     {
-        randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f/Time.fixedDeltaTime), maxRandomWalkInterval * (int) (1f/Time.fixedDeltaTime));
+        randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f / Time.fixedDeltaTime), maxRandomWalkInterval * (int)(1f / Time.fixedDeltaTime));
         desiredSpeed = -desiredSpeed;
         goingBackwards = !goingBackwards;
     }
 
     public void FixedUpdate()
     {
-        if (!stop)
+        if (!stop || waitForDirectionChange)
         {
             randomWalkInterval--;
             if (randomWalkInterval < 0)
@@ -101,17 +105,17 @@ public class Motor : MonoBehaviour
                 ChangeDirection();
             }
 
-            transform.Rotate(axisOfRotation, currentSpeed);
-            currentPosition = Vector3.Dot(transform.localEulerAngles, axisOfRotation);
-            if (currentPosition < 0f)
-                currentPosition += 360f;
-            //UpdateMotorPosition();
-
             if (currentSpeed != desiredSpeed)
             {
                 currentSpeed += 0.01f * Mathf.Sign(desiredSpeed - currentSpeed);
                 if (Mathf.Abs(currentSpeed - desiredSpeed) < 0.02f)
                     currentSpeed = desiredSpeed;
+            }
+            if (waitForDirectionChange && currentSpeed == desiredSpeed)
+            {
+                waitForDirectionChange = false;
+                if (currentPosition < 90 || currentPosition > 270)
+                    tooCloseToStop = true;
             }
         }
         else
@@ -125,21 +129,39 @@ public class Motor : MonoBehaviour
             }
             else if (currentPosition < 90f || currentPosition > 270f)
             {
-                currentSpeed += (degreesPerTick / 90f) * Mathf.Sign(desiredSpeed - currentSpeed);
-                if (Mathf.Abs(currentSpeed - desiredSpeed) < 0.02f)
+                if (Mathf.Abs(currentSpeed - desiredSpeed) <= 0.1f)
                 {
-                    if (currentPosition > 359.5f || currentPosition < 0.5f)
-                        currentSpeed = 0f;
+                    if (currentPosition > 359f || currentPosition < 1f)
+                    {
+                        if (currentSpeed > 0)
+                            currentSpeed = degreesPerTick * 0.01f;
+                        else
+                            currentSpeed = -degreesPerTick * 0.01f;
+                        if (currentPosition >= 360f - (degreesPerTick * 0.005f) || currentPosition <= degreesPerTick * 0.005f)
+                        {
+                            currentPosition = 0;
+                            currentSpeed = 0;
+                        }
+
+                    }
                     else
-                        currentSpeed = 0.1f * Mathf.Sign(currentSpeed);
+                    {
+                        if (currentSpeed > 0)
+                            currentSpeed = 0.1f;
+                        else
+                            currentSpeed = -0.1f;
+                    }
+                }
+                else
+                {
+                    currentSpeed += (degreesPerTick / 90f) * Mathf.Sign(desiredSpeed - currentSpeed);
                 }
             }
-            transform.Rotate(axisOfRotation, currentSpeed);
-            currentPosition = Vector3.Dot(transform.localEulerAngles, axisOfRotation);
-            if (currentPosition < 0f)
-                currentPosition += 360f;
-            //UpdateMotorPosition();
         }
+        transform.Rotate(axisOfRotation, currentSpeed);
+        UpdateMotorPosition();
+
+
     }
 
     private void UpdateMotorPosition()
@@ -147,6 +169,6 @@ public class Motor : MonoBehaviour
         currentPosition += currentSpeed;
         currentPosition %= 360f;
         if (currentPosition < 0f)
-            currentPosition = 360f - currentPosition;
+            currentPosition = 360f + currentPosition;
     }
 }
