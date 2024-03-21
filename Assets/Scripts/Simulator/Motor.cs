@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Scripting.Python;
 using UnityEngine;
 
 public class Motor : MonoBehaviour
@@ -55,7 +56,7 @@ public class Motor : MonoBehaviour
             waitForDirectionChange = true;
         desiredSpeed = 0;
         stop = true;
-        if (currentPosition < 90 || currentPosition > 270)
+        if ((currentPosition < 90 || currentPosition > 270) && !waitForDirectionChange)
             tooCloseToStop = true;
     }
 
@@ -113,6 +114,8 @@ public class Motor : MonoBehaviour
             if (waitForDirectionChange && currentSpeed == desiredSpeed)
             {
                 waitForDirectionChange = false;
+                if (currentPosition < 90 || currentPosition > 270)
+                    tooCloseToStop = true;
             }
         }
         else
@@ -123,8 +126,6 @@ public class Motor : MonoBehaviour
                 {
                     tooCloseToStop = false;
                 }
-                //transform.Rotate(axisOfRotation, currentSpeed);
-                //UpdateMotorPosition();
             }
             else if (currentPosition < 90f || currentPosition > 270f)
             {
@@ -136,8 +137,6 @@ public class Motor : MonoBehaviour
                             currentSpeed = degreesPerTick * 0.01f;
                         else
                             currentSpeed = -degreesPerTick * 0.01f;
-                        //transform.Rotate(axisOfRotation, currentSpeed);
-                        //UpdateMotorPosition();
                         if (currentPosition >= 360f - (degreesPerTick * 0.005f) || currentPosition <= degreesPerTick * 0.005f)
                         {
                             currentPosition = 0;
@@ -151,25 +150,20 @@ public class Motor : MonoBehaviour
                             currentSpeed = 0.1f;
                         else
                             currentSpeed = -0.1f;
-                        //transform.Rotate(axisOfRotation, currentSpeed);
-                        //UpdateMotorPosition();
                     }
                 }
                 else
                 {
                     currentSpeed += (degreesPerTick / 90f) * Mathf.Sign(desiredSpeed - currentSpeed);
-                    //transform.Rotate(axisOfRotation, currentSpeed);
-                    //UpdateMotorPosition();
                 }
-            }
-            else
-            {
-                //transform.Rotate(axisOfRotation, currentSpeed);
-                //UpdateMotorPosition();
             }
         }
         transform.Rotate(axisOfRotation, currentSpeed);
         UpdateMotorPosition();
+        PythonRunner.RunString(@"
+            import UnityEngine;
+            UnityEngine.Debug.Log('hello world')
+            ");
     }
 
     private void UpdateMotorPosition()
@@ -177,6 +171,6 @@ public class Motor : MonoBehaviour
         currentPosition += currentSpeed;
         currentPosition %= 360f;
         if (currentPosition < 0f)
-            currentPosition = 360f - currentPosition;
+            currentPosition = 360f + currentPosition;
     }
 }
