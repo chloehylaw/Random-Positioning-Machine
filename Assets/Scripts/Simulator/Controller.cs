@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
+using UnityEditor.Scripting.Python;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
     public float nominalRPM = 20f;
     public Motor outerMotor;
+    public float outerMotorSpeed;
     public Motor innerMotor;
+    public float innerMotorSpeed;
     protected List<Motor> motors;
     // Start is called before the first frame update
     protected void Start()
@@ -43,5 +47,16 @@ public class Controller : MonoBehaviour
         {
             motor.Stop();
         }
+    }
+
+    protected void FixedUpdate()
+    {
+        if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
+        {
+            File.WriteAllText($"{Application.dataPath}/motorOutput.txt", outerMotor.currentSpeed.ToString() + ", " + innerMotor.currentSpeed.ToString());
+            //Debug.Log(outerMotorSpeed);
+        }
+        outerMotorSpeed = outerMotor.currentSpeed;
+        innerMotorSpeed = innerMotor.currentSpeed;
     }
 }

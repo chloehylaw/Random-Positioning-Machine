@@ -38,7 +38,7 @@ public class Motor : MonoBehaviour
     public bool tooCloseToStop = false;
     public float currentPosition = 0;
     private bool goingBackwards = false;
-    public int minRandomWalkInterval = 15, maxRandomWalkInterval=30;
+    public int minRandomWalkInterval = 15, maxRandomWalkInterval = 30;
     public bool waitForDirectionChange = false;
 
     public void Start()
@@ -69,7 +69,7 @@ public class Motor : MonoBehaviour
         desiredSpeed = !goingBackwards ? degreesPerTick : -degreesPerTick;
         stop = false;
         if (resetInterval)
-            randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f/Time.fixedDeltaTime), maxRandomWalkInterval * (int) (1f/Time.fixedDeltaTime));
+            randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f / Time.fixedDeltaTime), maxRandomWalkInterval * (int)(1f / Time.fixedDeltaTime));
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public class Motor : MonoBehaviour
     /// </summary>
     private void ChangeDirection()
     {
-        randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f/Time.fixedDeltaTime), maxRandomWalkInterval * (int) (1f/Time.fixedDeltaTime));
+        randomWalkInterval = Random.Range(minRandomWalkInterval * (int)(1f / Time.fixedDeltaTime), maxRandomWalkInterval * (int)(1f / Time.fixedDeltaTime));
         desiredSpeed = -desiredSpeed;
         goingBackwards = !goingBackwards;
     }
@@ -142,7 +142,7 @@ public class Motor : MonoBehaviour
                             currentPosition = 0;
                             currentSpeed = 0;
                         }
-                        
+
                     }
                     else
                     {
@@ -160,10 +160,8 @@ public class Motor : MonoBehaviour
         }
         transform.Rotate(axisOfRotation, currentSpeed);
         UpdateMotorPosition();
-        PythonRunner.RunString(@"
-            import UnityEngine;
-            UnityEngine.Debug.Log('hello world')
-            ");
+
+
     }
 
     private void UpdateMotorPosition()

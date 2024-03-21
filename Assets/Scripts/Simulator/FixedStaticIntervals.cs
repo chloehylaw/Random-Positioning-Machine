@@ -38,8 +38,9 @@ public class FixedStaticIntervals : Controller
 		}
 	}
 
-    private void FixedUpdate()	
+    private new void FixedUpdate()	
     {
+		base.FixedUpdate();
 		if (isStatic)
 		{
 			tick++;
