@@ -7,7 +7,7 @@ public class StartButton : MonoBehaviour
     public TimeRow timeRow;
     public GravityRow gravityRow;
     public AlgorithmRow algorithmRow;
-
+    
     // Start is called before the first frame update
     void Start()
     {

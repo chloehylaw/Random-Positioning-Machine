@@ -3,21 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using TMPro;
 public class GravityRow : MonoBehaviour
 {
     /// <summary>
     /// Desired gravity is in m/s^2
     /// </summary>
     public float DesiredGravity { get; set; }
-    TMPro.TMP_InputField InputField;
-    TMPro.TMP_Dropdown dropdown;
+    TMP_InputField InputField;
+    TMP_Dropdown dropdown;
+    private TMP_Text text;
+
+    public GameObject warning;
+    
     // Start is called before the first frame update
     void Start()
     {
         InputField = GetComponentInChildren<TMP_InputField>();
         dropdown = GetComponentInChildren<TMP_Dropdown>();
+        text = warning.GetComponent<TMP_Text>();
+        text.text = "";
     }
+
+    public void WarningMessage (String message)
+    {
+        Debug.Log(message);
+        text.text = message;
+    }
+    
     /// <summary>
     /// Verifies gravity value and converts it to m/s^2.
     /// </summary>

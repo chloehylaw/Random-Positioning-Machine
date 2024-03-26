@@ -17,7 +17,7 @@ public class EndDateRow : MonoBehaviour
         text.text = "";
     }
 
-    public void UpdateTimeRow(object sender, EventArgs e)
+    private void UpdateTimeRow(object sender, EventArgs e)
     {
         //text.text = "Expected end date: " + timeRow.DesiredDateEnd.ToString();
         text.text = " " + timeRow.DesiredDateEnd.ToString();

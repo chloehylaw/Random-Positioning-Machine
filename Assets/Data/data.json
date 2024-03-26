@@ -1,0 +1,84 @@
+{
+    "job": [
+        {
+            "jobName": "d",
+            "timeDay": 4,
+            "timeHour": 3,
+            "timeMin": 2,
+            "timeSec": 4,
+            "gravityValue": "9.81",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        },
+        {
+            "jobName": "rr",
+            "timeDay": 56,
+            "timeHour": 3,
+            "timeMin": 2,
+            "timeSec": 4,
+            "gravityValue": "9.81",
+            "gravityUnit": "g",
+            "rotationalAlgorithm": "Flexible Static Intervals"
+        },
+        {
+            "jobName": "fgdfgs",
+            "timeDay": 12,
+            "timeHour": 4,
+            "timeMin": 3,
+            "timeSec": 0,
+            "gravityValue": "9.81",
+            "gravityUnit": "g",
+            "rotationalAlgorithm": "Fixed Static Intervals"
+        },
+        {
+            "jobName": "gdfg",
+            "timeDay": 1,
+            "timeHour": 1,
+            "timeMin": 1,
+            "timeSec": 1,
+            "gravityValue": "",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        },
+        {
+            "jobName": "",
+            "timeDay": 6,
+            "timeHour": 1,
+            "timeMin": 1,
+            "timeSec": 1,
+            "gravityValue": "",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        },
+        {
+            "jobName": "d",
+            "timeDay": 0,
+            "timeHour": 0,
+            "timeMin": 0,
+            "timeSec": 0,
+            "gravityValue": "9.8",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        },
+        {
+            "jobName": "d",
+            "timeDay": 0,
+            "timeHour": 0,
+            "timeMin": 0,
+            "timeSec": 0,
+            "gravityValue": "9.8",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        },
+        {
+            "jobName": "",
+            "timeDay": 0,
+            "timeHour": 0,
+            "timeMin": 0,
+            "timeSec": 0,
+            "gravityValue": "",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities"
+        }
+    ]
+}
