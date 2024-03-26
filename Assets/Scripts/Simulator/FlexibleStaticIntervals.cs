@@ -2,54 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlexibleStaticIntervals : CellTray
+public class FlexibleStaticIntervals : Controller
 {
-	int tick;
-	float eulerx;
-	float eulery;
-	float eulerz;
-	float upx;
-	float upy;
-	float upz;
-	float nupx;
-	float nupy;
-	float nupz;
-	float pnupx;
-	float pnupy;
-	float pnupz;
-	Vector3 nup;
-	Vector3 pnup;
-	// Start is called before the first frame update
-	void Start()
-	{
-		tick = 0;
-		Time.timeScale = 1;
+    /// <summary>
+    /// The minimum interval time in seconds
+    /// </summary>
+    float minimumInterval = 30f;
+    float g;
+    float minimumTicks;
+    public int tick;
+    bool isStatic = false;
+    public Accelerometer accelerometer;
 
-		//gameObject.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(0, -3, 0), new Vector3(60, 0, 0));
-		//gameObject.GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(8, 0, 0), new Vector3(0, 0, 30));
-	}
+    new void Start()
+    {
+        Time.timeScale = 2.0f;
+        base.Start();
+        g = SystemHandler.instance.gravity;
+        ResetTicks();
+        foreach (Motor motor in motors)
+        {
+            motor.RandomWalk();
+        }
+        isStatic = false;
+    }
 
-	void FixedUpdate()
-	{
-		//eulerx = transform.eulerAngles.x;
-		//eulery = transform.eulerAngles.y;
-		//eulerz = transform.eulerAngles.z;
-		//nup = Vector3.Scale(transform.up, new Vector3(1, -1, 1));
-		//pnup = nup*9810;
-		//upx = transform.up.x;
-		//upy = transform.up.y;
-		//upz = transform.up.z;
-		//nupx = nup.x;
-		//nupy = nup.y;
-		//nupz = nup.z;
-		//pnupx = pnup.x;
-		//pnupy = pnup.y;
-		//pnupz = pnup.z;
+    private void ResetTicks()
+    {
+        minimumTicks = minimumInterval * (1 / Time.fixedDeltaTime);
+    }
+    
 
-		tick++;
-		transform.RotateAround(new Vector3(200, 100, 0), new Vector3(1,0,0), 0.3f);
-		transform.Rotate(new Vector3(0, 0.3f, 0));
-        
-            
-	}
+    private new void FixedUpdate()
+    {
+        minimumTicks--;
+        base.FixedUpdate();
+        if (accelerometer.currentAve < g * 1000f && !isStatic)
+        {
+            if (minimumTicks < 0)
+            {
+                foreach (Motor motor in motors)
+                {
+                    motor.Stop();
+                }
+                ResetTicks();
+            }
+        }
+        else if (accelerometer.currentAve > g * 1000f && isStatic)
+        {
+            if(minimumTicks < 0)
+            {
+                foreach (Motor motor in motors)
+                {
+                    motor.RandomWalk();
+                }
+                ResetTicks();
+            }
+        }
+    }
 }

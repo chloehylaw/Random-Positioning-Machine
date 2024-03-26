@@ -36,6 +36,7 @@ public class FixedStaticIntervals : Controller
 		{
 			motor.RandomWalk();
 		}
+		isStatic = false;
 	}
 
     private new void FixedUpdate()	
