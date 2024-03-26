@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
-using UnityEditor.Scripting.Python;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -49,11 +48,32 @@ public class Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes Nominal rpm.
+    /// </summary>
+    /// <param name="RPM">Speed in RPM</param>
+    protected void SetNominalRPM(float RPM)
+    {
+        outerMotor.SetSpeed(RPM);
+        innerMotor.SetSpeed(RPM * Mathf.Sqrt(3) / 2f);
+        nominalRPM = RPM;
+    }
+
+    /// <summary>
+    /// Changes motorspeed without editing nominalRPM
+    /// </summary>
+    /// <param name="RPM">Speed in RPM</param>
+    protected void ChangeMotorSpeeds(float RPM)
+    {
+        outerMotor.SetSpeed(RPM);
+        innerMotor.SetSpeed(RPM * Mathf.Sqrt(3) / 2f);
+    }
+
     protected void FixedUpdate()
     {
         if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
         {
-            File.WriteAllText($"{Application.dataPath}/motorOutput.txt", outerMotor.currentSpeed.ToString() + ", " + innerMotor.currentSpeed.ToString());
+            //File.WriteAllText($"{Application.dataPath}/motorOutput.txt", outerMotor.currentSpeed.ToString() + ", " + innerMotor.currentSpeed.ToString());
             //Debug.Log(outerMotorSpeed);
         }
         outerMotorSpeed = outerMotor.currentSpeed;

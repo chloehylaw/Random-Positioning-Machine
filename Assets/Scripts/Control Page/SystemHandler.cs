@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class SystemHandler : MonoBehaviour
 {
     /// <summary>
-    /// Gravity in m/s^2
+    /// Desired gravity in m/s^2
     /// </summary>
     public float gravity;
     public DateTime endDate;
