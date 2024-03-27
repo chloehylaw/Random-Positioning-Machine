@@ -7,6 +7,7 @@ public class StartButton : MonoBehaviour
     public TimeRow timeRow;
     public GravityRow gravityRow;
     public AlgorithmRow algorithmRow;
+    public JobRow jobRow;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class StartButton : MonoBehaviour
 
     public void TryStart()
     {
-        if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart())
+        if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
         {
             SystemHandler.instance.gravity = gravityRow.DesiredGravity;
             SystemHandler.instance.endDate = timeRow.DesiredDateEnd;

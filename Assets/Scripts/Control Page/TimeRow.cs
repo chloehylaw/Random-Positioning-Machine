@@ -11,8 +11,6 @@ public class TimeRow : MonoBehaviour
     TMP_InputField Hours;
     TMP_InputField Minutes;
     TMP_InputField Seconds;
-    private TMP_Text text;
-    public GameObject warning;
     public DateTime timeToCheckIfEntered;
     public event EventHandler OnUpdateDesiredEndDate;
 
@@ -25,14 +23,6 @@ public class TimeRow : MonoBehaviour
         Minutes = t[2];
         Seconds = t[3];
         
-        text = warning.GetComponent<TMP_Text>();
-        text.text = "";
-    }
-    
-    public void WarningMessage (String message)
-    {
-        Debug.Log(message);
-        text.text = message;
     }
 
     public void UpdateDesiredDateEnd()
@@ -51,6 +41,7 @@ public class TimeRow : MonoBehaviour
 
     public bool AttemptStart()
     {
+        Debug.Log(timeToCheckIfEntered.ToString() + " " + DesiredDateEnd.ToString());
         return timeToCheckIfEntered != DesiredDateEnd && DesiredDateEnd.CompareTo(DateTime.Now) > 0;
     }
 

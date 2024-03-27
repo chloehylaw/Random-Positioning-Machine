@@ -12,23 +12,13 @@ public class GravityRow : MonoBehaviour
     public float DesiredGravity { get; set; }
     TMP_InputField InputField;
     TMP_Dropdown dropdown;
-    private TMP_Text text;
 
-    public GameObject warning;
     
     // Start is called before the first frame update
     void Start()
     {
         InputField = GetComponentInChildren<TMP_InputField>();
         dropdown = GetComponentInChildren<TMP_Dropdown>();
-        text = warning.GetComponent<TMP_Text>();
-        text.text = "";
-    }
-
-    public void WarningMessage (String message)
-    {
-        Debug.Log(message);
-        text.text = message;
     }
     
     /// <summary>
