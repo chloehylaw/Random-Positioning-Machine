@@ -11,6 +11,5 @@ public class CurrentTime : MonoBehaviour
     void Update()
     {
         currentTime.text = DateTime.Now.ToString();
-        
     }
 }
