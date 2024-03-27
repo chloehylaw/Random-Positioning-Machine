@@ -33,7 +33,6 @@ namespace Control_Page
 
     
         // control page info
-        [SerializeField] private TMP_InputField inputJobName;
         [SerializeField] private TMP_Dropdown inputRotationalAlgorithm;
 
         public class Job
@@ -43,12 +42,11 @@ namespace Control_Page
             public string gravityValue;
             public string rotationalAlgorithm;
             public string status;
-            public string saveTime;
             public string startTime;
             public string endTime;
         }
 
-        public Job myJob = new Job();
+        private Job inputJob;
     
         void Start()
         {
@@ -79,6 +77,20 @@ namespace Control_Page
         void Update()
         {
             currentTime = DateTime.Now;
+            
+            // find if there are any running jobs
+            /*if (inputJob.status == JobStatus.Running.ToString())
+            {
+                Debug.Log(inputJob.startTime);
+
+                DateTime startTime = Convert.ToDateTime(inputJob.startTime);
+                DateTime endTime = Convert.ToDateTime(inputJob.endTime);
+
+                jobText.text = inputJob.jobName;
+                statusText.text = inputJob.status;
+                elapsedTimeText.text = currentTime.Subtract(startTime).ToString();
+                remainingTimeText.text = endTime.Subtract(currentTime).ToString();
+            }*/
         }
 
         public void CreateCSVFile()
@@ -86,15 +98,14 @@ namespace Control_Page
             if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
             {
                 
-                Job inputJob = new Job
+                inputJob = new Job
                 {
                     guid = Guid.NewGuid().ToString(),
                     jobName = jobRow.GetJobTitle(),
                     gravityValue = SystemHandler.instance.gravity.ToString(CultureInfo.CurrentCulture),
                     rotationalAlgorithm = inputRotationalAlgorithm.options[inputRotationalAlgorithm.value].text,
-                    status = JobStatus.Inactive.ToString(),
-                    saveTime = DateTime.Now.ToString("yy-MM-dd HH-mm-ss"),
-                    startTime = "",
+                    status = JobStatus.Running.ToString(),
+                    startTime = DateTime.Now.ToString("yy-MM-dd HH-mm-ss"),
                     endTime = endDateRow.endDate.text,
                 };
             
@@ -102,10 +113,10 @@ namespace Control_Page
                 string[] columnNames = { "guid", "jobName", "gravityValue", "rotationalAlgorithm", "status", "saveTime", "startTime", "endTime" };
                 sb.AppendLine(string.Join(",", columnNames));
 
-                string[] jobData = { inputJob.guid, inputJob.jobName, inputJob.gravityValue, inputJob.rotationalAlgorithm, inputJob.status, inputJob.saveTime, inputJob.startTime, inputJob.endTime };
+                string[] jobData = { inputJob.guid, inputJob.jobName, inputJob.gravityValue, inputJob.rotationalAlgorithm, inputJob.status, inputJob.startTime, inputJob.startTime, inputJob.endTime };
                 sb.AppendLine(string.Join(",", jobData));
 
-                string pathName = Application.dataPath + "/Data/" + inputJob.saveTime.Replace(",", "") + "_" + inputJob.jobName + ".csv";
+                string pathName = Application.dataPath + "/Data/" + inputJob.startTime.Replace(",", "") + "_" + inputJob.jobName + ".csv";
                 if (File.Exists(pathName))
                 {
                     string[] lines = File.ReadAllLines(pathName);
@@ -117,7 +128,16 @@ namespace Control_Page
                     //File.Create(pathName);
                     File.WriteAllText(pathName, sb.ToString());
                 }
+                
+                /*
+                DateTime startTime = Convert.ToDateTime(inputJob.startTime);
+                DateTime endTime = Convert.ToDateTime(inputJob.endTime);
 
+                jobText.text = inputJob.jobName;
+                statusText.text = inputJob.status;
+                elapsedTimeText.text = currentTime.Subtract(startTime).ToString();
+                remainingTimeText.text = endTime.Subtract(currentTime).ToString();
+                */
                 
             }
             else
