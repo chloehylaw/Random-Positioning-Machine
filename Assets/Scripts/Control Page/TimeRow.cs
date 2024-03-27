@@ -42,7 +42,7 @@ public class TimeRow : MonoBehaviour
     public bool AttemptStart()
     {
         Debug.Log(timeToCheckIfEntered.ToString() + " " + DesiredDateEnd.ToString());
-        return timeToCheckIfEntered != DesiredDateEnd;
+        return timeToCheckIfEntered != DesiredDateEnd && DesiredDateEnd.CompareTo(DateTime.Now) > 0;
     }
 
 }

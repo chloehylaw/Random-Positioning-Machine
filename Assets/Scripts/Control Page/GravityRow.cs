@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using TMPro;
 public class GravityRow : MonoBehaviour
 {
     /// <summary>
@@ -39,6 +38,8 @@ public class GravityRow : MonoBehaviour
                 StartCoroutine(nameof(ColorFlash));
                 return false;
             }
+            if (DesiredGravity < 0)
+                return false;
         }
         catch (FormatException)
         {
