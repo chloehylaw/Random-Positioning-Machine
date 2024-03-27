@@ -8,7 +8,6 @@ namespace Control_Page
 {
     public class JSONLoadSave : MonoBehaviour
     {
-        public JSONToCSV jsonToCsv;
         public EndDateRow endDateRow;
         public JobRow jobRow;
         public TimeRow timeRow;
@@ -18,7 +17,7 @@ namespace Control_Page
 
         private DateTime currentTime;
     
-        // home page
+        // home page info
         public TMP_Text jobText;
         public TMP_Text statusText;
         public TMP_Text elapsedTimeText;
@@ -41,6 +40,7 @@ namespace Control_Page
         [Serializable]
         public class Job
         {
+            public string guid;
             public string jobName;
             public int timeDay;
             public int timeHour;
@@ -74,7 +74,7 @@ namespace Control_Page
                 myJobList = JsonUtility.FromJson<JobList>(str);
             }
         
-            // home page
+            // home page info
             jobText = jobName.GetComponent<TMP_Text>();
             jobText.text = "";
         
@@ -92,12 +92,15 @@ namespace Control_Page
         {
             currentTime = DateTime.Now;
 
+            // find if there are any running jobs
             var runningJob = myJobList.job.FirstOrDefault(j => j.status == JobStatus.Running.ToString());
 
             if (runningJob == null) return;
             {
                 var runningJobIndex = Array.FindIndex(myJobList.job, j => j.status == JobStatus.Running.ToString());
                 DateTime startTime = Convert.ToDateTime(myJobList.job[runningJobIndex].startTime);
+                Debug.Log(myJobList.job[runningJobIndex].endTime);
+
                 DateTime endTime = Convert.ToDateTime(myJobList.job[runningJobIndex].endTime);
 
                 jobText.text = myJobList.job[runningJobIndex].jobName;
@@ -210,6 +213,7 @@ namespace Control_Page
             // collect data from input fields
             Job inputJob = new Job
             {
+                guid = Guid.NewGuid().ToString(),
                 jobName = inputJobName.text,
                 timeDay = int.Parse(inputTimeDay.text),
                 timeHour = int.Parse(inputTimeHour.text),
@@ -244,7 +248,6 @@ namespace Control_Page
         
             // write data
             OutputJson();
-            jsonToCsv.convertJSONToCSV();            
         }
 
         void OutputJson ()
@@ -255,10 +258,10 @@ namespace Control_Page
     
         public void StartJob ()
         {
-            // find job by name
-            var job = myJobList.job.FirstOrDefault(j => j.jobName == inputJobName.text);
+            // find job by guid 
+            var job = myJobList.job.FirstOrDefault(j => j.guid == myJob.guid);
 
-            // if job doesn't exist
+            // if guid doesn't exist
             if (job == null)
             {
                 // add job to record
@@ -271,7 +274,7 @@ namespace Control_Page
                 }
             
                 // change the status of current job to "Running" and edit start time
-                var currentJobIndex = Array.FindIndex(myJobList.job, j => j.jobName == inputJobName.text);
+                var currentJobIndex = Array.FindIndex(myJobList.job, j => j.guid == myJob.guid);
                 myJobList.job[currentJobIndex].status = JobStatus.Running.ToString();
                 myJobList.job[currentJobIndex].startTime = currentTime.ToString();
             } 
