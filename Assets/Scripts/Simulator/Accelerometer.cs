@@ -41,7 +41,7 @@ public class Accelerometer : MonoBehaviour
 				currentAve = (((float)n - 1) * currentAve + force) / (float)n; 
 			}
 		}
-		if (tick % 2000 == 0)
+		if (tick % (SystemHandler.instance.printInterval / Time.fixedDeltaTime) == 0)
 		{
 			string path = "Assets/test.txt";
 			StreamWriter writer = new(path, true);

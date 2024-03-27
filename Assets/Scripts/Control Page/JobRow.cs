@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
+using System.IO;
+using Control_Page;
 using TMPro;
+using UnityEngine;
 
 public class JobRow : MonoBehaviour
 {
-    private TMP_Text text;
-    public GameObject warning;
+    TMP_InputField JobTitle;
 
-    private void Start ()
+    // Start is called before the first frame update
+    void Start()
     {
-        text = warning.GetComponent<TMP_Text>();
-        text.text = "";
+        JobTitle = GetComponentsInChildren<TMP_InputField>()[0];
     }
-    public void WarningMessage (String message)
+
+    public string GetJobTitle()
     {
-        Debug.Log(message);
-        text.text = message;
+        return JobTitle.text;
     }
+
+    public bool AttemptStart()
+    {
+        foreach (var path in Directory.GetFiles(Application.dataPath + "/Data/"))
+        {
+            if (path[(path.IndexOf('_')+1)..] == JobTitle.text + ".csv")
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }

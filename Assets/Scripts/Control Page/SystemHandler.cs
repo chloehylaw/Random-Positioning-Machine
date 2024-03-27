@@ -13,7 +13,10 @@ public class SystemHandler : MonoBehaviour
     public float gravity;
     public DateTime endDate;
     public RotationalAlgorithm algorithm;
-
+    /// <summary>
+    /// The interval to print to a file in seconds
+    /// </summary>
+    public float printInterval = 2f;
     public enum GravityUnits { Newtons, MetersPerSecondSquared };
     public static SystemHandler instance;
     public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals };

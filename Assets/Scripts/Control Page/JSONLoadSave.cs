@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using Date_Page;
 using TMPro;
 using UnityEngine;
 namespace Control_Page
@@ -9,7 +8,6 @@ namespace Control_Page
     public class JSONLoadSave : MonoBehaviour
     {
         public EndDateRow endDateRow;
-        public JobRow jobRow;
         public TimeRow timeRow;
         public GravityRow gravityRow;
     
@@ -110,103 +108,6 @@ namespace Control_Page
             }
         }
 
-        private bool ValidateJobName ()
-        {
-            // check if empty
-            if (String.IsNullOrEmpty(inputJobName.text))
-            {
-                jobRow.WarningMessage("String is empty.");
-                return false;
-            }
-        
-            // check if name already exists
-            if (myJobList.job.Any(j => j.jobName == inputJobName.text))
-            {
-                jobRow.WarningMessage("Job name already exists.");
-                return false;
-            }
-            return true;
-        }
-
-        private bool ValidateTime ()
-        {
-            string day = inputTimeDay.text;
-            string hour = inputTimeHour.text;
-            string min = inputTimeMin.text;
-            string sec = inputTimeSec.text;
-
-            bool anyNotEmpty = !String.IsNullOrEmpty(day) || !String.IsNullOrEmpty(hour) || !String.IsNullOrEmpty(min) || !String.IsNullOrEmpty(sec);
-        
-            // if all inputs are empty
-            if (!anyNotEmpty)
-            {
-                timeRow.WarningMessage("Empty time input.");
-                return false;
-            }
-        
-            // check if at least one is not 0
-            bool anyNotZero = day != "0" || hour != "0" || min != "0" || sec != "0";
-        
-            // if empty or negative, set to 0
-            if (string.IsNullOrEmpty(day) || day.Contains("-") || !int.TryParse(day, out _))
-            {
-                day = "0";
-                timeRow.WarningMessage("Invalid day.");
-                return false;
-            }
-            
-
-            if (string.IsNullOrEmpty(hour) || hour.Contains("-") || !int.TryParse(hour, out _))
-            {
-                hour = "0";
-                timeRow.WarningMessage("Invalid day.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(min) || min.Contains("-") || !int.TryParse(min, out _))
-            {
-                min = "0";
-                timeRow.WarningMessage("Invalid day.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(sec) || sec.Contains("-") || !int.TryParse(sec, out _))
-            {
-                sec = "0";
-                timeRow.WarningMessage("Invalid day.");
-                return false;
-            }
-        
-            return anyNotZero;
-        }
-
-        private bool ValidateGravityInput ()
-        {
-            string gravity = inputGravityValue.text;
-
-            if (string.IsNullOrEmpty(gravity))
-            {
-                gravityRow.WarningMessage("Empty gravity input.");
-                return false;
-            }
-
-            if (double.TryParse(gravity, out var number)) return number >= 0;
-            gravityRow.WarningMessage("Invalid gravity input.");
-            return false;
-
-        }
-
-        public void ValidateForm ()
-        {
-            if (!ValidateJobName() || !ValidateTime() || !ValidateGravityInput())
-            {
-                AddRecord();
-            } else
-            {
-                Debug.Log("Refill form");
-            }
-        }
-
         // cant make it a list rip so array it is
         public void AddRecord ()
         {
@@ -260,7 +161,7 @@ namespace Control_Page
         {
             // find job by guid 
             var job = myJobList.job.FirstOrDefault(j => j.guid == myJob.guid);
-
+            Debug.Log(myJob.guid.ToString());
             // if guid doesn't exist
             if (job == null)
             {
