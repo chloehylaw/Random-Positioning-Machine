@@ -13,7 +13,10 @@ public class Accelerometer : MonoBehaviour
 	public Vector3 totalForce;
 	long tick = 0;
 	long n = 0;
-	float currentAve;
+	/// <summary>
+	/// Current average gravity in mm/s^2
+	/// </summary>
+	public float currentAve;
 
 	private void Start()
 	{

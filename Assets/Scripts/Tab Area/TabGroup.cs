@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TabGroup : MonoBehaviour
 {
     public List<TabButton> tabButtons;
-    Color darkGray;
-    Color lightGray;
+    private Color darkGray;
+    private Color lightGray;
     public TabButton selectedTab;
     public List<GameObject> objectsToSwap;
 
@@ -19,10 +20,7 @@ public class TabGroup : MonoBehaviour
 
     public void addTab(TabButton button)
     {
-        if(tabButtons == null)
-        {
-            tabButtons = new List<TabButton>();
-        }
+        tabButtons ??= new List<TabButton>();
         tabButtons.Add(button);
     }
 
@@ -49,24 +47,14 @@ public class TabGroup : MonoBehaviour
         int index = button.transform.GetSiblingIndex();
         for (int i = 0; i < objectsToSwap.Count; i++)
         {
-            if( i == index)
-            {
-                objectsToSwap[i].SetActive(true);
-            } else
-            {
-                objectsToSwap[i].SetActive(false);
-            }
+            objectsToSwap[i].SetActive(i == index);
         }
     }
 
-    public void ResetTabs()
+    private void ResetTabs()
     {
-        foreach(TabButton button in tabButtons)
+        foreach (var button in tabButtons.Where(button => selectedTab == null || button != selectedTab))
         {
-            if(selectedTab != null && button == selectedTab)
-            {
-                continue;
-            }
             button.background.color = darkGray;
         }
     }

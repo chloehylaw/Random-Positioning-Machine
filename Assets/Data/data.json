@@ -1,0 +1,26 @@
+{
+    "job": [
+        {
+            "jobName": "d",
+            "timeDay": 4,
+            "timeHour": 3,
+            "timeMin": 2,
+            "timeSec": 4,
+            "gravityValue": "9.81",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities",
+            "status": ""
+        },
+        {
+            "jobName": "0",
+            "timeDay": 0,
+            "timeHour": 0,
+            "timeMin": 0,
+            "timeSec": 0,
+            "gravityValue": "9",
+            "gravityUnit": "m/s²",
+            "rotationalAlgorithm": "Two Velocities",
+            "status": "Inactive"
+        }
+    ]
+}
