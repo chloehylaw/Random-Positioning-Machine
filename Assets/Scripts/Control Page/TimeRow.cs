@@ -51,7 +51,7 @@ public class TimeRow : MonoBehaviour
 
     public bool AttemptStart()
     {
-        return timeToCheckIfEntered != DesiredDateEnd;
+        return timeToCheckIfEntered != DesiredDateEnd && DesiredDateEnd.CompareTo(DateTime.Now) > 0;
     }
 
 }

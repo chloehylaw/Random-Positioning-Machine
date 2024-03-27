@@ -49,6 +49,8 @@ public class GravityRow : MonoBehaviour
                 StartCoroutine(nameof(ColorFlash));
                 return false;
             }
+            if (DesiredGravity < 0)
+                return false;
         }
         catch (FormatException)
         {
