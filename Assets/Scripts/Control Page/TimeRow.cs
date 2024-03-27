@@ -13,7 +13,7 @@ public class TimeRow : MonoBehaviour
     TMP_InputField Seconds;
     private TMP_Text text;
     public GameObject warning;
-    
+    public DateTime timeToCheckIfEntered;
     public event EventHandler OnUpdateDesiredEndDate;
 
     // Start is called before the first frame update
@@ -37,6 +37,7 @@ public class TimeRow : MonoBehaviour
 
     public void UpdateDesiredDateEnd()
     {
+        timeToCheckIfEntered = DateTime.Now;
         double.TryParse(Days.text, out double d);
         double.TryParse(Hours.text, out double h);
         double.TryParse(Minutes.text, out double m);
@@ -50,7 +51,7 @@ public class TimeRow : MonoBehaviour
 
     public bool AttemptStart()
     {
-        return DesiredDateEnd != null ? true : false;
+        return timeToCheckIfEntered != DesiredDateEnd;
     }
 
 }
