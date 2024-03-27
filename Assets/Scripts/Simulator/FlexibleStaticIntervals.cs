@@ -16,7 +16,6 @@ public class FlexibleStaticIntervals : Controller
 
     new void Start()
     {
-        Time.timeScale = 2.0f;
         base.Start();
         g = SystemHandler.instance.gravity;
         ResetTicks();
