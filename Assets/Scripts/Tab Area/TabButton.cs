@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
@@ -10,9 +11,12 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public Image background;
 
+    public UnityEvent onTabSwitch;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroup.onTabSelected(this);
+        onTabSwitch.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData) 

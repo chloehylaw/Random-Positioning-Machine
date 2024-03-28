@@ -1,3 +1,4 @@
+using Control_Page;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,9 @@ public class SystemHandler : MonoBehaviour
     public GameObject TwoVelocitiesPrefab;
     public GameObject FlexibleStaticIntervalsPrefab;
     public GameObject FixedStaticIntervalsPrefab;
+    public Job EmptyJobPrefab;
+    public Job currentJob;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +49,7 @@ public class SystemHandler : MonoBehaviour
 
     public void HandleStart()
     {
+        DataHandler.instance.CreateCSVFile();
         if (algorithm == RotationalAlgorithm.TwoVelocities)
             Instantiate(TwoVelocitiesPrefab);
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)

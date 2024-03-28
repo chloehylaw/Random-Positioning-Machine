@@ -10,46 +10,16 @@ namespace Control_Page
     public class DataHandler : MonoBehaviour
     {
         public static DataHandler instance;
-    
-        private DateTime currentTime;
+
         public EndDateRow endDateRow;
         public TimeRow timeRow;
         public JobRow jobRow;
         public GravityRow gravityRow;
         public AlgorithmRow algorithmRow;
 
-        private enum JobStatus {Running, Completed, Inactive}
-
-        // home page info
-        public TMP_Text jobText;
-        public TMP_Text statusText;
-        public TMP_Text elapsedTimeText;
-        public TMP_Text remainingTimeText;
-
-        public GameObject currentJobName;
-        public GameObject currentStatus;
-        public GameObject elapsedTimeStatus;
-        public GameObject remainingTimeStatus;
-
-    
         // control page info
-        [SerializeField] private TMP_InputField inputJobName;
         [SerializeField] private TMP_Dropdown inputRotationalAlgorithm;
 
-        public class Job
-        {
-            public string guid;
-            public string jobName;
-            public string gravityValue;
-            public string rotationalAlgorithm;
-            public string status;
-            public string saveTime;
-            public string startTime;
-            public string endTime;
-        }
-
-        public Job myJob = new Job();
-    
         void Start()
         {
             if (FindObjectsOfType<DataHandler>().Length == 1)
@@ -61,51 +31,31 @@ namespace Control_Page
             {
                 Destroy(gameObject);
             }
-        
-            // home page info
-            jobText = currentJobName.GetComponent<TMP_Text>();
-            jobText.text = "";
-        
-            statusText = currentStatus.GetComponent<TMP_Text>();
-            statusText.text = "";
-        
-            elapsedTimeText = elapsedTimeStatus.GetComponent<TMP_Text>();
-            elapsedTimeText.text = "";
-        
-            remainingTimeText = remainingTimeStatus.GetComponent<TMP_Text>();
-            remainingTimeText.text = "";
-        }
-
-        void Update()
-        {
-            currentTime = DateTime.Now;
         }
 
         public void CreateCSVFile()
         {
-            if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
+            if (timeRow.AttemptStart() && gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
             {
-                
-                Job inputJob = new Job
-                {
-                    guid = Guid.NewGuid().ToString(),
-                    jobName = jobRow.GetJobTitle(),
-                    gravityValue = SystemHandler.instance.gravity.ToString(CultureInfo.CurrentCulture),
-                    rotationalAlgorithm = inputRotationalAlgorithm.options[inputRotationalAlgorithm.value].text,
-                    status = JobStatus.Inactive.ToString(),
-                    saveTime = DateTime.Now.ToString("yy-MM-dd HH-mm-ss"),
-                    startTime = "",
-                    endTime = endDateRow.endDate.text,
-                };
-            
+                Job inputJob = Instantiate(SystemHandler.instance.EmptyJobPrefab);
+                inputJob.guid = Guid.NewGuid();
+                inputJob.jobName = jobRow.GetJobTitle();
+                inputJob.gravityValue = gravityRow.DesiredGravity;
+                inputJob.rotationalAlgorithm = algorithmRow.DesiredAlgorithm;
+                inputJob.status = Job.JobStatus.Running;
+                inputJob.startTime = DateTime.Now;
+                //inputJob.startTime = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
+                inputJob.endTime = SystemHandler.instance.endDate;
+                SystemHandler.instance.currentJob = inputJob;
+
                 StringBuilder sb = new StringBuilder();
                 string[] columnNames = { "guid", "jobName", "gravityValue", "rotationalAlgorithm", "status", "saveTime", "startTime", "endTime" };
                 sb.AppendLine(string.Join(",", columnNames));
 
-                string[] jobData = { inputJob.guid, inputJob.jobName, inputJob.gravityValue, inputJob.rotationalAlgorithm, inputJob.status, inputJob.saveTime, inputJob.startTime, inputJob.endTime };
+                string[] jobData = { inputJob.guid.ToString(), inputJob.jobName, inputJob.gravityValue.ToString(CultureInfo.InvariantCulture), inputJob.rotationalAlgorithm.ToString(), inputJob.status.ToString(), inputJob.startTime.ToString(CultureInfo.InvariantCulture), inputJob.endTime.ToString(CultureInfo.InvariantCulture) };
                 sb.AppendLine(string.Join(",", jobData));
 
-                string pathName = Application.dataPath + "/Data/" + inputJob.saveTime.Replace(",", "") + "_" + inputJob.jobName + ".csv";
+                string pathName = Application.dataPath + "/Data/" + inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(",", "") + "_" + inputJob.jobName + ".csv";
                 if (File.Exists(pathName))
                 {
                     string[] lines = File.ReadAllLines(pathName);
@@ -118,14 +68,13 @@ namespace Control_Page
                     File.WriteAllText(pathName, sb.ToString());
                 }
 
-                
             }
             else
             {
-                Debug.Log("Error " + (gravityRow.AttemptStart()?"":"gravity ") + 
-                          (jobRow.AttemptStart()?"":"job ") + 
-                          (timeRow.AttemptStart()?"":"time ") + 
-                          (algorithmRow.AttemptStart()?"":"algorithm "));
+                Debug.Log("Error " + (gravityRow.AttemptStart() ? "" : "gravity ") +
+                          (jobRow.AttemptStart() ? "" : "job ") +
+                          (timeRow.AttemptStart() ? "" : "time ") +
+                          (algorithmRow.AttemptStart() ? "" : "algorithm "));
             }
         }
     }
