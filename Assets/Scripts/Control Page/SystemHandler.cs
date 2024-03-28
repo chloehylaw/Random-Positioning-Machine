@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +24,9 @@ public class SystemHandler : MonoBehaviour
     /// Local gravity in m/s^2
     /// </summary>
     public float localG;
+    public GameObject TwoVelocitiesPrefab;
+    public GameObject FlexibleStaticIntervalsPrefab;
+    public GameObject FixedStaticIntervalsPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,16 +40,17 @@ public class SystemHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Directory.CreateDirectory(Application.dataPath + "\\Data");
     }
 
     public void HandleStart()
     {
         if (algorithm == RotationalAlgorithm.TwoVelocities)
-            SceneManager.LoadScene("Two Velocities");
+            Instantiate(TwoVelocitiesPrefab);
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
-            SceneManager.LoadScene("Flexible Static Intervals");
+            Instantiate(FlexibleStaticIntervalsPrefab);
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
-            SceneManager.LoadScene("Fixed Static Intervals");
+            Instantiate(FixedStaticIntervalsPrefab);
     }
 
 }

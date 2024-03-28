@@ -22,7 +22,7 @@ public class JobRow : MonoBehaviour
 
     public bool AttemptStart()
     {
-        foreach (var path in Directory.GetFiles(Application.dataPath + "/Data/"))
+        foreach (var path in Directory.GetFiles(Application.dataPath + "\\Data\\"))
         {
             if (path[(path.IndexOf('_')+1)..] == JobTitle.text + ".csv")
             {

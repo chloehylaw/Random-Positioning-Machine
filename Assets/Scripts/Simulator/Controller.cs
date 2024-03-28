@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     public Motor innerMotor;
     public float innerMotorSpeed;
     protected List<Motor> motors;
+    SerialPort port;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -26,6 +27,7 @@ public class Controller : MonoBehaviour
         outerMotor.SetSpeed(nominalRPM);
         innerMotor.SetSpeed(nominalRPM*Mathf.Sqrt(3)/2f);
         StartMotors(true);
+        port = new SerialPort("COM1", 115200);
     }
     /// <summary>
     /// Starts all motors.
@@ -74,6 +76,7 @@ public class Controller : MonoBehaviour
     {
         if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
         {
+            //port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
             //File.WriteAllText($"{Application.dataPath}/motorOutput.txt", outerMotor.currentSpeed.ToString() + ", " + innerMotor.currentSpeed.ToString());
             //Debug.Log(outerMotorSpeed);
         }
