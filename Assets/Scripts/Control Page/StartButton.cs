@@ -25,7 +25,7 @@ public class StartButton : MonoBehaviour
     {
         if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
         {
-            Debug.Log("changingscene");
+            //Debug.Log("changingscene");
             SystemHandler.instance.gravity = gravityRow.DesiredGravity;
             SystemHandler.instance.endDate = timeRow.DesiredDateEnd;
             SystemHandler.instance.algorithm = algorithmRow.DesiredAlgorithm;

@@ -8,12 +8,18 @@ public class Job : MonoBehaviour
 {
     public enum JobStatus {Running, Completed, Abort}
 
-    
+    // handling meta data shown for user
     public Guid guid;
     public string jobName;
     public float gravityValue;
     public SystemHandler.RotationalAlgorithm rotationalAlgorithm;
     public JobStatus status;
     public DateTime startTime;
+    public DateTime expectedEndTime;
     public DateTime endTime;
+    public DateTime abortTime;
+    
+    // handling meta data for pause and resume
+    public DateTime pauseTime;
+    public DateTime resumeTime;
 }

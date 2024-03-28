@@ -88,7 +88,7 @@ public class Controller : MonoBehaviour
         }
         if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
         {
-            port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
+            //port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
         }
         outerMotorSpeed = outerMotor.currentSpeed;
         innerMotorSpeed = innerMotor.currentSpeed;
