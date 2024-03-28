@@ -30,6 +30,8 @@ public class SystemHandler : MonoBehaviour
     public GameObject FixedStaticIntervalsPrefab;
     public Job EmptyJobPrefab;
     public Job currentJob;
+    public enum CurrentJobStateEnum { None, Paused, Normal }
+    public CurrentJobStateEnum currentJobState = CurrentJobStateEnum.None;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,7 @@ public class SystemHandler : MonoBehaviour
             Instantiate(FlexibleStaticIntervalsPrefab);
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
             Instantiate(FixedStaticIntervalsPrefab);
+        currentJobState = CurrentJobStateEnum.Normal;
     }
 
 }

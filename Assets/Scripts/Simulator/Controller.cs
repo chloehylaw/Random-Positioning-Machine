@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,9 @@ public class Controller : MonoBehaviour
     public float innerMotorSpeed;
     protected List<Motor> motors;
     SerialPort port;
+    protected bool paused = false;
+    protected bool recordData = false;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -74,13 +78,26 @@ public class Controller : MonoBehaviour
 
     protected void FixedUpdate()
     {
+        if (DateTime.Now.CompareTo(SystemHandler.instance.endDate) > 0)
+        {
+            StopMotors();
+        }
+        if (SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.Paused)
+        {
+            Pause();
+        }
         if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
         {
-            //port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
-            //File.WriteAllText($"{Application.dataPath}/motorOutput.txt", outerMotor.currentSpeed.ToString() + ", " + innerMotor.currentSpeed.ToString());
-            //Debug.Log(outerMotorSpeed);
+            port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
         }
         outerMotorSpeed = outerMotor.currentSpeed;
         innerMotorSpeed = innerMotor.currentSpeed;
+    }
+
+    protected void Pause()
+    {
+        paused = true;
+        StopMotors();
+        recordData = false;
     }
 }
