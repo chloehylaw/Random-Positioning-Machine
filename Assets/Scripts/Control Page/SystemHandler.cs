@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Control_Page;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,10 @@ public class SystemHandler : MonoBehaviour
     /// Local gravity in m/s^2
     /// </summary>
     public float localG;
+    /// <summary>
+    /// Currently running job
+    /// </summary>
+    public Job currentJob;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +46,13 @@ public class SystemHandler : MonoBehaviour
 
     public void HandleStart()
     {
-        if (algorithm == RotationalAlgorithm.TwoVelocities)
-            SceneManager.LoadScene("Two Velocities");
-        else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
-            SceneManager.LoadScene("Flexible Static Intervals");
-        else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
-            SceneManager.LoadScene("Fixed Static Intervals");
+        DataHandler.instance.CreateCSVFile();
+        // if (algorithm == RotationalAlgorithm.TwoVelocities)
+        //     SceneManager.LoadScene("Two Velocities");
+        // else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
+        //     SceneManager.LoadScene("Flexible Static Intervals");
+        // else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
+        //     SceneManager.LoadScene("Fixed Static Intervals");
     }
 
 }
