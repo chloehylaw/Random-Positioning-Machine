@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jobName: None
   gravityValue: 0
-  rotationalAlgorithm: 0
-  status: 0
+  rotationalAlgorithm: 3
+  status: 3

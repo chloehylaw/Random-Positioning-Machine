@@ -31,7 +31,8 @@ public class Controller : MonoBehaviour
         outerMotor.SetSpeed(nominalRPM);
         innerMotor.SetSpeed(nominalRPM*Mathf.Sqrt(3)/2f);
         StartMotors(true);
-        port = new SerialPort("COM1", 115200);
+        port = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One);
+        port.Open();
     }
     /// <summary>
     /// Starts all motors.
@@ -81,6 +82,7 @@ public class Controller : MonoBehaviour
         if (DateTime.Now.CompareTo(SystemHandler.instance.endDate) > 0)
         {
             StopMotors();
+            SystemHandler.instance.HandleStop();
         }
         if (SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.Paused)
         {
@@ -99,5 +101,10 @@ public class Controller : MonoBehaviour
         paused = true;
         StopMotors();
         recordData = false;
+    }
+
+    private void OnApplicationQuit()
+    {
+        port.Close();
     }
 }

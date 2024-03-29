@@ -20,7 +20,7 @@ public class SystemHandler : MonoBehaviour
     public float printInterval = 2f;
     public enum GravityUnits { Newtons, MetersPerSecondSquared };
     public static SystemHandler instance;
-    public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals };
+    public enum RotationalAlgorithm { TwoVelocities, FlexibleStaticIntervals, FixedStaticIntervals, None };
     /// <summary>
     /// Local gravity in m/s^2
     /// </summary>
@@ -28,6 +28,7 @@ public class SystemHandler : MonoBehaviour
     public GameObject TwoVelocitiesPrefab;
     public GameObject FlexibleStaticIntervalsPrefab;
     public GameObject FixedStaticIntervalsPrefab;
+    public GameObject currentScene;
     public Job EmptyJobPrefab;
     public Job currentJob;
     public enum CurrentJobStateEnum { None, Paused, Normal }
@@ -49,15 +50,22 @@ public class SystemHandler : MonoBehaviour
         Directory.CreateDirectory(Application.dataPath + "\\Data");
     }
 
+    public void HandleStop()
+    {
+        Destroy(currentScene);
+        currentJob = EmptyJobPrefab;
+        currentJobState = CurrentJobStateEnum.None;
+    }
+
     public void HandleStart()
     {
         DataHandler.instance.CreateCSVFile();
         if (algorithm == RotationalAlgorithm.TwoVelocities)
-            Instantiate(TwoVelocitiesPrefab);
+            currentScene = Instantiate(TwoVelocitiesPrefab);
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
-            Instantiate(FlexibleStaticIntervalsPrefab);
+            currentScene = Instantiate(FlexibleStaticIntervalsPrefab);
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
-            Instantiate(FixedStaticIntervalsPrefab);
+            currentScene = Instantiate(FixedStaticIntervalsPrefab);
         currentJobState = CurrentJobStateEnum.Normal;
     }
 
