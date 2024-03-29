@@ -37,6 +37,11 @@ public class HomePage : MonoBehaviour
             statusText.text = currentJob.status.ToString();
             elapsedTimeText.text = currentTime.Subtract(startTime).ToString(@"dd\.hh\:mm\:ss");
             remainingTimeText.text = endTime.Subtract(currentTime).ToString(@"dd\.hh\:mm\:ss");
+            if (SystemHandler.instance.currentJob.rotationalAlgorithm == SystemHandler.RotationalAlgorithm.None && SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.None)
+            {
+                elapsedTimeText.text = "";
+                remainingTimeText.text = "";
+            }
         }
         else
         {

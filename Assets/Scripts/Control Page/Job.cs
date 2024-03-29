@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Job : MonoBehaviour
 {
-    public enum JobStatus {Running, Completed, Abort}
+    public enum JobStatus {Running, Completed, Abort, None}
 
     
     public Guid guid;
