@@ -8,7 +8,7 @@ public class FixedStaticIntervals : Controller
 	/// <summary>
 	/// The total interval time in seconds
 	/// </summary>
-	float fullInterval = 150f;
+	float fullInterval = 30f;
 	/// <summary>
 	/// Interval of time spent not moving per full interval in seconds
 	/// </summary>
@@ -16,7 +16,7 @@ public class FixedStaticIntervals : Controller
 	/// <summary>
 	/// Interval of time spent moving per full interval in seconds
 	/// </summary>
-	float dynamicInterval;
+	public float dynamicInterval;
     /// <summary>
     /// Desired gravity in proportion of g
     /// </summary>
@@ -52,13 +52,13 @@ public class FixedStaticIntervals : Controller
 		}
 		else
 		{
-			tick++;
-			if (tick >= dynamicInterval * (1f / Time.deltaTime))
+			if (tick >= dynamicInterval * (1f / Time.deltaTime) && tick>0)
 			{
 				StopMotors();
 				isStatic = true;
 				tick = 0;
 			}
+			tick++;
 		}
     }
 

@@ -45,8 +45,7 @@ public class HomePage : MonoBehaviour
         }
         else
         {
-            //no current job
-            Debug.Log("no job");
+            currentJob = SystemHandler.instance.EmptyJobPrefab;
 
         }
     }

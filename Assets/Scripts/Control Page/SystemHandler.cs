@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SystemHandler : MonoBehaviour
@@ -34,6 +35,11 @@ public class SystemHandler : MonoBehaviour
     public enum CurrentJobStateEnum { None, Paused, Normal }
     public CurrentJobStateEnum currentJobState = CurrentJobStateEnum.None;
 
+
+    public delegate void AnswerCallback(Controller controller);
+    public event AnswerCallback onControllerLoaded;
+    public event AnswerCallback onControllerUnloaded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,11 +67,20 @@ public class SystemHandler : MonoBehaviour
     {
         DataHandler.instance.CreateCSVFile();
         if (algorithm == RotationalAlgorithm.TwoVelocities)
+        {
             currentScene = Instantiate(TwoVelocitiesPrefab);
+            onControllerLoaded(FindObjectOfType<Controller>());
+        }
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
+        {
             currentScene = Instantiate(FlexibleStaticIntervalsPrefab);
+            onControllerLoaded(FindObjectOfType<Controller>());
+        }
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
+        {
             currentScene = Instantiate(FixedStaticIntervalsPrefab);
+            onControllerLoaded(FindObjectOfType<Controller>());
+        }
         currentJobState = CurrentJobStateEnum.Normal;
     }
 

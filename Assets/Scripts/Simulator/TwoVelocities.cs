@@ -14,7 +14,6 @@ public class TwoVelocities : Controller
 
     new void Start()
     {
-        Time.timeScale = 2.0f;
         base.Start();
         g = SystemHandler.instance.gravity / SystemHandler.instance.localG;
         foreach (Motor motor in motors)

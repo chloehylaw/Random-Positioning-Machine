@@ -141,6 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2886165221815581288}
   - component: {fileID: 5068768366706946135}
+  - component: {fileID: 4193259703889476301}
   m_Layer: 0
   m_Name: Directional Light (1)
   m_TagString: Untagged
@@ -225,6 +226,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4193259703889476301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356618748135069675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ac502337bdcf45802fe5a8930f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5466037728096327283}
 --- !u!1 &1622630759785051425
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +288,7 @@ MonoBehaviour:
   outerMotorSpeed: 0
   innerMotor: {fileID: 880358963774991217}
   innerMotorSpeed: 0
+  dynamicInterval: 0
   tick: 0
 --- !u!1 &2286190902856426278
 GameObject:
@@ -754,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3107733875967370240}
   - component: {fileID: 5242934181110890408}
+  - component: {fileID: 3611603371456711154}
   m_Layer: 0
   m_Name: Directional Light (2)
   m_TagString: Untagged
@@ -838,6 +854,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3611603371456711154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870036286306302895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ac502337bdcf45802fe5a8930f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5466037728096327283}
 --- !u!1 &5709780492509557241
 GameObject:
   m_ObjectHideFlags: 0
