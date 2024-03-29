@@ -9,10 +9,22 @@ public class JobListTable : MonoBehaviour
 {
     public Transform entryContainer;
     public Transform entryTemplate;
+
+    public GameObject infoPanel;
+    public TMP_Text jobName;
+    public TMP_Text gravityValue;
+    public TMP_Text rotationalAlgorithm;
+    public TMP_Text status;
+    public TMP_Text startTime;
+    public TMP_Text endTime;
+    public TMP_Text abortTime;
+    public Button closeInfoPanel;
+    
     private void Awake()
     {
         // set the template line to not show
         entryTemplate.gameObject.SetActive(false);
+        infoPanel.gameObject.SetActive(false);
         
         // Get the number of job files
         DirectoryInfo d = new DirectoryInfo(Application.dataPath + "/Data/");
@@ -44,6 +56,7 @@ public class JobListTable : MonoBehaviour
             
             // Button to handle opening a mini screen to display info about the job
             Button infoButton = entryTransform.Find("Info").GetComponent<Button>();
+            infoButton.onClick.AddListener(() => OpenInfoPanel(filePath));
 
             // Button to handle downloading the selected job file
             Button exportButton = entryTransform.Find("Export").GetComponent<Button>();
@@ -54,10 +67,37 @@ public class JobListTable : MonoBehaviour
         }
     }
 
+    void OpenInfoPanel(String filePath)
+    {
+        var csvLines = File.ReadAllLines(filePath).Skip(1).ToList();
+            
+        jobName.text = csvLines[0].Split(',')[1];
+        gravityValue.text = "Gravity Value: " + csvLines[0].Split(',')[2];
+        rotationalAlgorithm.text = "Rotational Algorithm: " + csvLines[0].Split(',')[3];
+        status.text = "Status: " + csvLines[0].Split(',')[4];
+        startTime.text = "Start Time: " + csvLines[0].Split(',')[5];
+        endTime.text = "End Time: " + csvLines[0].Split(',')[7];
+
+        if (csvLines[0].Split(',')[4] == Job.JobStatus.Abort.ToString())
+        {
+            abortTime.text = "Abort Time: " + csvLines[0].Split(',')[8];
+        }
+        else
+        {
+            abortTime.text = "";
+        }
+        infoPanel.gameObject.SetActive(true);
+        closeInfoPanel.onClick.AddListener(ClosePanel);
+    }
+
+    void ClosePanel()
+    {
+        infoPanel.gameObject.SetActive(false);
+    }
+
     void DeleteJob(String filePath)
     {
         DirectoryInfo dir = new DirectoryInfo(filePath);
-        dir.Delete();
-
+        dir.Delete(true);
     }
 }
