@@ -8,6 +8,7 @@ public class StartButton : MonoBehaviour
     public GravityRow gravityRow;
     public AlgorithmRow algorithmRow;
     public JobRow jobRow;
+    public JobListTable jobListTable;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class StartButton : MonoBehaviour
             SystemHandler.instance.endDate = timeRow.DesiredDateEnd;
             SystemHandler.instance.algorithm = algorithmRow.DesiredAlgorithm;
             SystemHandler.instance.HandleStart();
+            jobListTable.ControlPageStart();
         }
     }
 }

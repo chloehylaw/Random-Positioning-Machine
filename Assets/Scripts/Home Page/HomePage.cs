@@ -37,26 +37,19 @@ public class HomePage : MonoBehaviour
         clickedStop = false;
     }
     
-
     void Update()
     {
         currentTime = DateTime.Now;
 
         if (currentJob != null)
         {
-            //DateTime startTime = Convert.ToDateTime(SystemHandler.instance.currentJob.startTime);
-            //DateTime expectedEndTime = Convert.ToDateTime(SystemHandler.instance.currentJob.endTime);
-            //Debug.Log(expectedEndTime);
-
             //display
             jobText.text = currentJob.jobName;
             statusText.text = currentJob.status.ToString();
             //elapsedTimeText.text = currentTime.Subtract(startTime).ToString(@"dd\.hh\:mm\:ss");
             //elapsedTimeText.text = EvaluateElapsedTime();
-            //remainingTimeText.text = expectedEndTime.Subtract(currentTime).ToString(@"dd\.hh\:mm\:ss");
             remainingTimeText.text = EvaluateRemainingTime();
             expectedEndTimeText.text = EvaluateExpectedEndTime();
-            //expectedEndTimeText.text = SystemHandler.instance.currentJob.endTime.ToString("G");
         }
         else
         {
@@ -70,6 +63,7 @@ public class HomePage : MonoBehaviour
     /// </summary>
     public void ClickPauseButton()
     {
+        Debug.Log("Paused");
         currentJob.pauseTime = DateTime.Now;
         clickedPause = true;
         clickedResume = false;
@@ -80,6 +74,7 @@ public class HomePage : MonoBehaviour
     /// </summary>
     public void ClickResumeButton()
     {
+        Debug.Log("Resumed");
         currentJob.resumeTime = DateTime.Now;
         clickedPause = false;
         clickedResume = true;
@@ -90,6 +85,7 @@ public class HomePage : MonoBehaviour
     /// </summary>
     public void ClickStopButton()
     {
+        Debug.Log("Stopped");
         currentJob.status = Job.JobStatus.Abort;
         currentJob.abortTime = DateTime.Now;
         clickedStop = true;
@@ -126,8 +122,9 @@ public class HomePage : MonoBehaviour
     private string EvaluateRemainingTime()
     {
         string newRemainingTime = null;
-        DateTime expectedEndTime = Convert.ToDateTime(SystemHandler.instance.currentJob.endTime);
-
+        DateTime expectedEndTime = Convert.ToDateTime(SystemHandler.instance.currentJob.expectedEndTime);
+        //Debug.Log(expectedEndTime);
+        
         if (clickedPause)
         {
             newRemainingTime = "";
@@ -140,22 +137,6 @@ public class HomePage : MonoBehaviour
         {
             newRemainingTime = expectedEndTime.Subtract(currentTime).ToString(@"dd\.hh\:mm\:ss");
         }
-
-        if (expectedEndTime.Equals(DateTime.MinValue))
-        {
-            //Debug.Log("done");
-            currentJob.status = Job.JobStatus.Completed;
-            newRemainingTime = "";
-            currentJob.endTime = DateTime.Now;
-            //endDate.text = "End Date: " + DateTime.Now.ToString("G");
-            UpdateCSV();
-        }
-        else
-        {
-            newRemainingTime = expectedEndTime.Subtract(currentTime).ToString(@"dd\.hh\:mm\:ss");
-        }
-
-
         return newRemainingTime;
     }
 

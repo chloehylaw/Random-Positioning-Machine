@@ -11,6 +11,8 @@ public class JobListTable : MonoBehaviour
     public Transform entryTemplate;
 
     public GameObject infoPanel;
+    public Button closeInfoPanel;
+    
     public TMP_Text jobName;
     public TMP_Text gravityValue;
     public TMP_Text rotationalAlgorithm;
@@ -18,26 +20,68 @@ public class JobListTable : MonoBehaviour
     public TMP_Text startTime;
     public TMP_Text endTime;
     public TMP_Text abortTime;
-    public Button closeInfoPanel;
+    
+    public GameObject deletePanel;
+    public TMP_Text deletePanelJobName;
+    public Button cancelDelete;
+    public Button confirmDelete;
     
     private void Awake()
     {
         // set the template line to not show
         entryTemplate.gameObject.SetActive(false);
         infoPanel.gameObject.SetActive(false);
+        deletePanel.gameObject.SetActive(false);
+
+        DisplayTable();
+    }
+
+    void Update()
+    {
+        //entryContainer.anchoredPosition = new Vector2(409.25f, transform.position.y);
+    }
+
+    public void ControlPageStart()
+    {
+        // delete all created clones
+        var count = entryContainer.childCount;
+        for (var i = 1; i < count; i++)
+        {
+            Destroy(entryContainer.GetChild(i).gameObject);
+        }
         
+        DisplayTable();
+    }
+
+    /// <summary>
+    /// Displays the list of jobs in a table
+    /// </summary>
+    private void DisplayTable()
+    {
         // Get the number of job files
         DirectoryInfo d = new DirectoryInfo(Application.dataPath + "/Data/");
+        Debug.Log(Application.dataPath + "/Data/");
         FileInfo[] f = d.GetFiles("*.csv", SearchOption.AllDirectories);
-        int numOfJobFiles = f.Length;
+        var numOfJobFiles = f.Length;
         
         // duplicate the template, length = number of job files
-        float templateHeight = 60f;
-        for (int i = 0; i < numOfJobFiles; i++)
+        var templateHeight = 60f;
+        for (var i = 0; i < numOfJobFiles; i++)
         {
+            RectTransform containerStartPosition = entryContainer.GetComponent<RectTransform>();
+            RectTransform containerHeight = entryContainer.GetComponent<RectTransform>();
+            containerStartPosition.anchoredPosition = new Vector2(409.255f, transform.position.y);
+
+            if (i > 5)
+            {
+                var height = 380f + templateHeight * (i - 5);
+                containerHeight.sizeDelta = new Vector2(818.5f, height);
+                containerStartPosition.anchoredPosition = new Vector2(409.255f, -(height / 2));
+            }
+            
             Transform entryTransform = Instantiate(entryTemplate, entryContainer);
             RectTransform entryReactTransform = entryTransform.GetComponent<RectTransform>();
-            entryReactTransform.anchoredPosition = new Vector2(0, 160f + (-templateHeight * i));
+            entryReactTransform.anchoredPosition = new Vector2(409.255f, -30f + (-templateHeight * i));
             entryTransform.gameObject.SetActive(true);
 
             // job numbers
@@ -47,6 +91,10 @@ public class JobListTable : MonoBehaviour
             // Open file to get information (job name and status)
             var filePath = Application.dataPath + "/Data/" + Path.GetFileName(f[i].Name);
             var csvLines = File.ReadAllLines(filePath).Skip(1).ToList();
+
+            //Debug.Log(filePath);
+            string fileName = Path.GetFileName(f[i].Name);
+            //Debug.Log(Path.GetFileName(f[i].Name));
             
             String jobName = csvLines[0].Split(',')[1];
             String jobStatus = csvLines[0].Split(',')[4];
@@ -63,10 +111,14 @@ public class JobListTable : MonoBehaviour
 
             // Button to handle deleting the selected job file
             Button deleteButton = entryTransform.Find("Delete").GetComponent<Button>();
-            deleteButton.onClick.AddListener(() => DeleteJob(filePath));
+            deleteButton.onClick.AddListener(() => OpenDeletePanel(jobName, filePath));
         }
     }
 
+    /// <summary>
+    /// By clicking the info button, it opens a panel with the details of the job
+    /// </summary>
+    /// <param name="filePath"></param>
     void OpenInfoPanel(String filePath)
     {
         var csvLines = File.ReadAllLines(filePath).Skip(1).ToList();
@@ -90,14 +142,50 @@ public class JobListTable : MonoBehaviour
         closeInfoPanel.onClick.AddListener(ClosePanel);
     }
 
+    /// <summary>
+    /// Close the info panel
+    /// </summary>
     void ClosePanel()
     {
         infoPanel.gameObject.SetActive(false);
     }
 
-    void DeleteJob(String filePath)
+    /// <summary>
+    /// Opens the delete job panel 
+    /// </summary>
+    /// <param name="jobName"></param>
+    /// <param name="filePath"></param>
+    void OpenDeletePanel(String jobName, String filePath)
     {
-        DirectoryInfo dir = new DirectoryInfo(filePath);
-        dir.Delete(true);
+        deletePanel.gameObject.SetActive(true);
+        
+        deletePanelJobName.text = jobName;
+        
+        cancelDelete.onClick.AddListener(ClickCancelButton);
+        confirmDelete.onClick.AddListener(() => ClickDeleteButton(filePath));
+    }
+
+    /// <summary>
+    /// Cancel button for the delete panel
+    /// </summary>
+    void ClickCancelButton()
+    {
+        deletePanel.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Delete button for the delete panel
+    /// </summary>
+    /// <param name="filePath"></param>
+    void ClickDeleteButton(String filePath)
+    {
+        var count = entryContainer.childCount;
+        for (var i = 1; i < count; i++)
+        {
+            Destroy(entryContainer.GetChild(i).gameObject);
+        }
+        File.Delete(filePath);
+        deletePanel.gameObject.SetActive(false);
+        DisplayTable();
     }
 }
