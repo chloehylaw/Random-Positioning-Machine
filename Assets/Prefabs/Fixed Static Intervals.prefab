@@ -239,6 +239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5466037728096327283}
+  light: {fileID: 0}
+  rand: 0
+  tick: 0
 --- !u!1 &1622630759785051425
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +355,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8db7a08eb54d80d4b8cd8f91db6847e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -531,7 +534,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8db7a08eb54d80d4b8cd8f91db6847e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -716,7 +719,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 379ceca58a1815043a5803061c7a48c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -801,10 +804,10 @@ Light:
   m_GameObject: {fileID: 4870036286306302895}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.74509805, b: 0.04938182, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1
   m_Range: 1979.6
   m_SpotAngle: 66
   m_InnerSpotAngle: 21.80208
@@ -867,6 +870,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5466037728096327283}
+  light: {fileID: 0}
+  rand: 0
+  tick: 0
 --- !u!1 &5709780492509557241
 GameObject:
   m_ObjectHideFlags: 0

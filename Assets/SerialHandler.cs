@@ -7,8 +7,13 @@ public class SerialHandler : MonoBehaviour
 {
     Controller controller;
     SerialPort port;
+    SerialPort port2;
+    SerialPort port3;
     bool hasController = false;
     public static SerialHandler instance;
+    public string bufferedMessage;
+    public int tick;
+    public int debug;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +30,12 @@ public class SerialHandler : MonoBehaviour
         }
         StartCoroutine(WaitTillEndOfFrame());
 
-        port = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+        port = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One);
+        port2 = new SerialPort("COM2", 4800, Parity.None, 8, StopBits.One);
+        port3 = new SerialPort("COM3", 4800, Parity.None, 8, StopBits.One);
         port.Open();
+        port2.Open();
+        port3.Open();
     }
 
     IEnumerator WaitTillEndOfFrame()
@@ -50,15 +59,42 @@ public class SerialHandler : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        tick++;
         //should be refactored
         if (hasController && (controller.outerMotorSpeed != controller.outerMotor.currentSpeed || controller.innerMotorSpeed != controller.innerMotor.currentSpeed))
         {
-            port.WriteLine((controller.outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (controller.innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
+            var outer = controller.outerMotor.currentSpeed*60f/(360f*Time.deltaTime);
+            var inner = controller.innerMotor.currentSpeed*60f/(360f*Time.deltaTime);
+            var outerPWM = 255 - (int)(Mathf.Abs(outer / 40f) * 255);
+            var innerPWM = 255 - (int)(Mathf.Abs(inner / 40f) * 255);
+
+            bufferedMessage = (Mathf.Sign(outer) > 0 ? "+" : "-") + outerPWM + ", " 
+                + (Mathf.Sign(inner) > 0 ? "+" : "-") + innerPWM;
+        }
+
+
+        if (tick >= 0.1f/Time.fixedDeltaTime)
+        {
+            if (bufferedMessage != "")
+            {
+                debug++;
+                if(debug%3==0)
+                    port.WriteLine(bufferedMessage);
+                if (debug % 3 == 1)
+                    port2.WriteLine(bufferedMessage);
+                if (debug % 3 == 2)
+                    port3.WriteLine(bufferedMessage);
+                tick = 0;
+                bufferedMessage = "";
+            }
+
         }
     }
 
     private void OnApplicationQuit()
     {
         port.Close();
+        port2.Close();
+        port3.Close();
     }
 }
