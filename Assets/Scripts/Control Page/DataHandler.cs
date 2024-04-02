@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Globalization;
+using System.Linq;
 using System.IO;
 using System.Text;
 using TMPro;
@@ -10,7 +12,11 @@ namespace Control_Page
     public class DataHandler : MonoBehaviour
     {
         public static DataHandler instance;
-
+        public GameObject alertPanel;
+        public TMP_Text alertMessage;
+        
+        private Job currentJob;
+    
         public TimeRow timeRow;
         public JobRow jobRow;
         public GravityRow gravityRow;
@@ -21,6 +27,8 @@ namespace Control_Page
 
         void Start()
         {
+            alertPanel.gameObject.SetActive(false);
+            
             if (FindObjectsOfType<DataHandler>().Length == 1)
             {
                 DontDestroyOnLoad(gameObject);
@@ -32,6 +40,43 @@ namespace Control_Page
             }
         }
 
+        IEnumerator WaitForFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            currentJob = SystemHandler.instance.currentJob;
+        }
+        
+        public void UpdateCurrentJob()
+        {
+            StartCoroutine(WaitForFrame());
+        }
+
+        public void CheckRunningJob()
+        {
+            if (currentJob.status == Job.JobStatus.Running)
+            {
+                alertPanel.gameObject.SetActive(true);
+                alertMessage.text = "Do you want to abort " + currentJob.jobName + " job and start " + jobRow.GetJobTitle() + " job?";
+            }
+        }
+
+        public void ClickYesButton()
+        {
+            // set current job and set the status to abort
+            currentJob.status = Job.JobStatus.Abort;
+            
+            // update the current job CSV file
+            UpdateCSV();
+            
+            alertPanel.gameObject.SetActive(false);
+            CreateCSVFile();
+        }
+
+        public void ClickCancelButton()
+        {
+            alertPanel.gameObject.SetActive(false);
+        }
+        
         /// <summary>
         /// Create a new CSV file for the created new job
         /// </summary>
@@ -106,6 +151,36 @@ namespace Control_Page
                 //           (timeRow.AttemptStart() ? "" : "time ") +
                 //           (algorithmRow.AttemptStart() ? "" : "algorithm "));
             }
+        }
+        
+        /// <summary>
+        /// Update the CSV file
+        /// </summary>
+        public void UpdateCSV()
+        {
+            string[] jobData =
+            {
+                currentJob.guid.ToString(),
+                currentJob.jobName,
+                currentJob.gravityValue.ToString(CultureInfo.InvariantCulture),
+                currentJob.rotationalAlgorithm.ToString(),
+                currentJob.status.ToString(),
+                currentJob.startTime.ToString(CultureInfo.InvariantCulture),
+                currentJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
+                currentJob.endTime.ToString(CultureInfo.InvariantCulture),
+                currentJob.abortTime.ToString(CultureInfo.InvariantCulture)
+            };
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(string.Join(",", jobData));
+
+            string pathName = Application.dataPath + "/Data/" +
+                              currentJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
+                              "_" + currentJob.jobName + ".csv";
+
+            string[] lines = File.ReadAllLines(pathName);
+            lines[1] = string.Join(",", jobData);
+            File.WriteAllLines(pathName, lines);
         }
     }
 }

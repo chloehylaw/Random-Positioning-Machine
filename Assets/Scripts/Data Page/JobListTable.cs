@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class JobListTable : MonoBehaviour
 {
+    private Job currentJob;
+
     public Transform entryContainer;
     public Transform entryTemplate;
 
@@ -35,10 +37,10 @@ public class JobListTable : MonoBehaviour
 
         DisplayTable();
     }
-
-    void Update()
+    
+    public void UpdateCurrentJob()
     {
-        //entryContainer.anchoredPosition = new Vector2(409.25f, transform.position.y);
+        currentJob = SystemHandler.instance.currentJob;
     }
 
     public void ControlPageStart()
@@ -50,6 +52,7 @@ public class JobListTable : MonoBehaviour
             Destroy(entryContainer.GetChild(i).gameObject);
         }
         
+
         DisplayTable();
     }
 
@@ -60,7 +63,7 @@ public class JobListTable : MonoBehaviour
     {
         // Get the number of job files
         DirectoryInfo d = new DirectoryInfo(Application.dataPath + "/Data/");
-        Debug.Log(Application.dataPath + "/Data/");
+        // Debug.Log(Application.dataPath + "/Data/");
         FileInfo[] f = d.GetFiles("*.csv", SearchOption.AllDirectories);
         var numOfJobFiles = f.Length;
         

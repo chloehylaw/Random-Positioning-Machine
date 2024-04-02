@@ -89,7 +89,7 @@ public class HomePage : MonoBehaviour
         currentJob.status = Job.JobStatus.Abort;
         currentJob.abortTime = DateTime.Now;
         clickedStop = true;
-        UpdateCSV();
+        Control_Page.DataHandler.instance.UpdateCSV();
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class HomePage : MonoBehaviour
         if (clickedResume)
         {
             newExpectedEndTime = expectedEndTime.Add(addedTime).ToString("G");
-            UpdateCSV();
+            Control_Page.DataHandler.instance.UpdateCSV();
         }
         else
         {
@@ -165,33 +165,5 @@ public class HomePage : MonoBehaviour
         return newExpectedEndTime;
     }
 
-    /// <summary>
-    /// Update the CSV file
-    /// </summary>
-    private void UpdateCSV()
-    {
-        string[] jobData =
-        {
-            currentJob.guid.ToString(),
-            currentJob.jobName,
-            currentJob.gravityValue.ToString(CultureInfo.InvariantCulture),
-            currentJob.rotationalAlgorithm.ToString(),
-            currentJob.status.ToString(),
-            currentJob.startTime.ToString(CultureInfo.InvariantCulture),
-            currentJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
-            currentJob.endTime.ToString(CultureInfo.InvariantCulture),
-            currentJob.abortTime.ToString(CultureInfo.InvariantCulture)
-        };
-
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine(string.Join(",", jobData));
-
-        string pathName = Application.dataPath + "/Data/" +
-                          currentJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
-                          "_" + currentJob.jobName + ".csv";
-
-        string[] lines = File.ReadAllLines(pathName);
-        lines[1] = string.Join(",", jobData);
-        File.WriteAllLines(pathName, lines);
-    }
+    
 }
