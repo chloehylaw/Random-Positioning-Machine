@@ -50,24 +50,11 @@ public class SystemHandler : MonoBehaviour
     public int ScreensaverTimerInTicks;
     public CanvasGroup menu;
 
-
-    public delegate void AnswerCallback(Controller controller);
-    public event AnswerCallback onControllerLoaded;
-    public event AnswerCallback onControllerUnloaded;
-
-    public int ScreensaverTicker = 0;
-    /// <summary>
-    /// Number of seconds of inactivity for screensaver
-    /// </summary>
-    public int ScreensaverTimer = 30;
-    public int ScreensaverTimerInTicks;
-    public CanvasGroup menu;
-
     // Start is called before the first frame update
     void Start()
     {
         localG = 9.81f;
-        if (FindObjectsOfType<SystemHandler>().Length == 1)
+        if(FindObjectsOfType<SystemHandler>().Length == 1)
         {
             DontDestroyOnLoad(gameObject);
             instance = this;
@@ -122,42 +109,7 @@ public class SystemHandler : MonoBehaviour
             ScreensaverTicker++;
         else
             ScreensaverTicker = 0;
-        if (ScreensaverTicker > ScreensaverTimerInTicks)
-        {
-            StartCoroutine(Fader());
-            menu.interactable = false;
-        }
-    }
-
-    public IEnumerator Fader()
-    {
-        float elapsedTime = 0;
-        while (menu.alpha > 0)
-        {
-            elapsedTime += Time.deltaTime;
-            menu.alpha = Mathf.Clamp01(1.0f - (elapsedTime / 3f));
-            yield return null;
-        }
-        yield return null;
-    }
-
-    public void Update()
-    {
-        if (Input.anyKey)
-        {
-            ScreensaverTicker = 0;
-            menu.alpha = 1;
-            menu.interactable = true;
-        }
-    }
-
-    public void FixedUpdate()
-    {
-        if (currentJobState == CurrentJobStateEnum.Normal)
-            ScreensaverTicker++;
-        else
-            ScreensaverTicker = 0;
-        if (ScreensaverTicker > ScreensaverTimerInTicks)
+        if (ScreensaverTicker > ScreensaverTimerInTicks )
         {
             StartCoroutine(Fader());
             menu.interactable = false;
@@ -177,25 +129,25 @@ public class SystemHandler : MonoBehaviour
     }
 
     public void HandleStart()
-    {
-        DataHandler.instance.CreateCSVFile();
+    {        
+        DataHandler.instance.CheckRunningJob();
         if (algorithm == RotationalAlgorithm.TwoVelocities)
         {
             currentScene = Instantiate(TwoVelocitiesPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
         {
             currentScene = Instantiate(FlexibleStaticIntervalsPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
         {
             currentScene = Instantiate(FixedStaticIntervalsPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         currentJobState = CurrentJobStateEnum.Normal;
     }

@@ -15,7 +15,7 @@ namespace Control_Page
         public GameObject alertPanel;
         public TMP_Text alertMessage;
 
-        private Job currentJob;
+        //private Job currentJob;
 
 
         public TimeRow timeRow;
@@ -44,7 +44,7 @@ namespace Control_Page
         IEnumerator WaitForFrame()
         {
             yield return new WaitForEndOfFrame();
-            currentJob = SystemHandler.instance.currentJob;
+            //currentJob = SystemHandler.instance.currentJob;
         }
 
         public void UpdateCurrentJob()
@@ -54,17 +54,23 @@ namespace Control_Page
 
         public void CheckRunningJob()
         {
-            if (currentJob.status == Job.JobStatus.Running)
+            if (SystemHandler.instance.currentJob.status == Job.JobStatus.Running)
             {
+                Debug.Log("Check Bad");
                 alertPanel.gameObject.SetActive(true);
-                alertMessage.text = "Do you want to abort " + currentJob.jobName + " job and start " + jobRow.GetJobTitle() + " job?";
+                alertMessage.text = "Do you want to abort " + SystemHandler.instance.currentJob.jobName + " job and start " + jobRow.GetJobTitle() + " job?";
+            }
+            else
+            {
+                Debug.Log("Here check good");
+                CreateCSVFile();
             }
         }
 
         public void ClickYesButton()
         {
             // set current job and set the status to abort
-            currentJob.status = Job.JobStatus.Abort;
+            SystemHandler.instance.currentJob.status = Job.JobStatus.Abort;
 
             // update the current job CSV file
             UpdateCSV();
@@ -183,5 +189,7 @@ namespace Control_Page
             lines[1] = string.Join(",", jobData);
             File.WriteAllLines(pathName, lines);
         }
+
+        
     }
 }

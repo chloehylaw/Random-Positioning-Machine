@@ -31,7 +31,7 @@ public class JobListTable : MonoBehaviour
         // set the template line to not show
         entryTemplate.gameObject.SetActive(false);
         infoPanel.gameObject.SetActive(false);
-        //deletePanel.gameObject.SetActive(false);
+        deletePanel.gameObject.SetActive(false);
 
         DisplayTable();
     }
@@ -57,7 +57,7 @@ public class JobListTable : MonoBehaviour
         if (!Directory.Exists(Application.dataPath + "/Data/"))
             Directory.CreateDirectory(Application.dataPath + "/Data/");
         DirectoryInfo d = new DirectoryInfo(Application.dataPath + "/Data/");
-        Debug.Log(Application.dataPath + "/Data/");
+        //Debug.Log(Application.dataPath + "/Data/");
         FileInfo[] f = d.GetFiles("*.csv", SearchOption.AllDirectories);
         var numOfJobFiles = f.Length;
 

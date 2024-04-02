@@ -79,7 +79,7 @@ public class Controller : MonoBehaviour
         if (DateTime.Now.CompareTo(SystemHandler.instance.currentJob.expectedEndTime) > 0)
         {
             StopMotors();
-            SystemHandler.instance.HandleStop();
+            SystemHandler.instance.HandleStop(true);
         }
         if (SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.Paused)
         {
