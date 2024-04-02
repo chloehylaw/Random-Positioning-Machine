@@ -41,19 +41,7 @@ public class Accelerometer : MonoBehaviour
 				currentAve = (((float)n - 1) * currentAve + force) / (float)n; 
 			}
 		}
-		if (tick % (SystemHandler.instance.printInterval / Time.fixedDeltaTime) == 0)
-		{
-			string path = "Assets/test.txt";
-			StreamWriter writer = new(path, true);
-			writer.WriteLine(currentAve + ", ");
-			writer.Close();
-			Debug.Log(currentAve);
-		}
 		prevVelocity = currentVelocity;
 		prevPosition = transform.position;
-		if (tick == 360000)
-		{
-			Application.Quit();
-		}
 	}
 }

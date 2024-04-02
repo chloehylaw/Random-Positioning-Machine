@@ -26,7 +26,6 @@ public class TwoVelocities : Controller
     private new void FixedUpdate()
     {
         tick++;
-        base.FixedUpdate();
         if (accelerometer.totalForce.y < 0)
         {
             ChangeMotorSpeeds(nominalRPM * speedFactorWhenInverted);
@@ -39,5 +38,6 @@ public class TwoVelocities : Controller
         {
             speedFactorWhenInverted *= accelerometer.currentAve / (g*SystemHandler.instance.localG*1000f);
         }
+        base.FixedUpdate();
     }
 }

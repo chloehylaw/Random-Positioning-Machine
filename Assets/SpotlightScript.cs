@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpotlightScript : MonoBehaviour
 {
     public Transform target;
-    public Light light;
+    public new Light light;
     public float rand;
     public float tick;
 

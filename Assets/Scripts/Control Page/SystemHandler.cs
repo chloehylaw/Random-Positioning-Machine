@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Timers;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -35,7 +36,7 @@ public class SystemHandler : MonoBehaviour
     public Job currentJob;
     public enum CurrentJobStateEnum { None, Paused, Normal }
     public CurrentJobStateEnum currentJobState = CurrentJobStateEnum.None;
-
+    public Controller currentController;
 
     public delegate void AnswerCallback(Controller controller);
     public event AnswerCallback onControllerLoaded;
@@ -68,11 +69,28 @@ public class SystemHandler : MonoBehaviour
         menu = FindObjectOfType<CanvasGroup>();
     }
 
-    public void HandleStop()
+    public void HandleStop(bool complete = false)
     {
-        Destroy(currentScene);
+        if (complete)
+        {
+            currentJob.status = Job.JobStatus.Completed;
+            DataHandler.instance.CreateCSVFile();
+        }
         currentJob = EmptyJobPrefab;
         currentJobState = CurrentJobStateEnum.None;
+        Destroy(currentScene);
+    }
+
+    public void HandlePause()
+    {
+        currentController.StopMotors();
+        currentJobState = CurrentJobStateEnum.Paused;
+    }
+
+    public void HandleResume()
+    {
+        currentController.StartMotors();
+        currentJobState = CurrentJobStateEnum.Normal;
     }
 
     public void Update()
@@ -116,17 +134,20 @@ public class SystemHandler : MonoBehaviour
         if (algorithm == RotationalAlgorithm.TwoVelocities)
         {
             currentScene = Instantiate(TwoVelocitiesPrefab);
-            onControllerLoaded(FindObjectOfType<Controller>());
+            currentController = FindObjectOfType<Controller>();
+            onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
         {
             currentScene = Instantiate(FlexibleStaticIntervalsPrefab);
-            onControllerLoaded(FindObjectOfType<Controller>());
+            currentController = FindObjectOfType<Controller>();
+            onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
         {
             currentScene = Instantiate(FixedStaticIntervalsPrefab);
-            onControllerLoaded(FindObjectOfType<Controller>());
+            currentController = FindObjectOfType<Controller>();
+            onControllerLoaded(currentController);
         }
         currentJobState = CurrentJobStateEnum.Normal;
     }

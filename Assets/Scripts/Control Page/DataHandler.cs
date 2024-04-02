@@ -11,7 +11,6 @@ namespace Control_Page
     {
         public static DataHandler instance;
 
-        public EndDateRow endDateRow;
         public TimeRow timeRow;
         public JobRow jobRow;
         public GravityRow gravityRow;
@@ -33,6 +32,9 @@ namespace Control_Page
             }
         }
 
+        /// <summary>
+        /// Create a new CSV file for the created new job
+        /// </summary>
         public void CreateCSVFile()
         {
             if (timeRow.AttemptStart() && gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
@@ -45,17 +47,46 @@ namespace Control_Page
                 inputJob.status = Job.JobStatus.Running;
                 inputJob.startTime = DateTime.Now;
                 //inputJob.startTime = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
-                inputJob.endTime = SystemHandler.instance.endDate;
+                inputJob.expectedEndTime = SystemHandler.instance.endDate;
+                inputJob.endTime = DateTime.MinValue;
+                inputJob.abortTime = DateTime.MinValue;
+
                 SystemHandler.instance.currentJob = inputJob;
 
                 StringBuilder sb = new StringBuilder();
-                string[] columnNames = { "guid", "jobName", "gravityValue", "rotationalAlgorithm", "status", "saveTime", "startTime", "endTime" };
+                string[] columnNames =
+                {
+                    "GUID",
+                    "Job Name",
+                    "Gravity Value (g)",
+                    "Rotational Algorithm",
+                    "Status",
+                    "Start Time",
+                    "Expected End Time",
+                    "End Time",
+                    "Abort Time"
+                };
                 sb.AppendLine(string.Join(",", columnNames));
 
-                string[] jobData = { inputJob.guid.ToString(), inputJob.jobName, inputJob.gravityValue.ToString(CultureInfo.InvariantCulture), inputJob.rotationalAlgorithm.ToString(), inputJob.status.ToString(), inputJob.startTime.ToString(CultureInfo.InvariantCulture), inputJob.endTime.ToString(CultureInfo.InvariantCulture) };
+                string[] jobData =
+                {
+                    inputJob.guid.ToString(),
+                    inputJob.jobName,
+                    inputJob.gravityValue.ToString(CultureInfo.InvariantCulture),
+                    inputJob.rotationalAlgorithm.ToString(),
+                    inputJob.status.ToString(),
+                    inputJob.startTime.ToString(CultureInfo.InvariantCulture),
+                    inputJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
+                    inputJob.endTime.ToString(CultureInfo.InvariantCulture),
+                    inputJob.abortTime.ToString(CultureInfo.InvariantCulture)
+                };
                 sb.AppendLine(string.Join(",", jobData));
 
-                string pathName = Application.dataPath + "/Data/" + inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(",", "") + "_" + inputJob.jobName + ".csv";
+                //string pathName = Application.dataPath + "/Data/" + inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(",", "") + "_" + inputJob.jobName + ".csv";
+                string pathName = Application.dataPath + "/Data/" +
+                                  inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
+                                  "_" + inputJob.jobName + ".csv";
+
                 if (File.Exists(pathName))
                 {
                     string[] lines = File.ReadAllLines(pathName);
@@ -67,15 +98,45 @@ namespace Control_Page
                     //File.Create(pathName);
                     File.WriteAllText(pathName, sb.ToString());
                 }
-
             }
             else
             {
-                Debug.Log("Error " + (gravityRow.AttemptStart() ? "" : "gravity ") +
-                          (jobRow.AttemptStart() ? "" : "job ") +
-                          (timeRow.AttemptStart() ? "" : "time ") +
-                          (algorithmRow.AttemptStart() ? "" : "algorithm "));
+                // Debug.Log("Error " + (gravityRow.AttemptStart() ? "" : "gravity ") +
+                //           (jobRow.AttemptStart() ? "" : "job ") +
+                //           (timeRow.AttemptStart() ? "" : "time ") +
+                //           (algorithmRow.AttemptStart() ? "" : "algorithm "));
             }
         }
+
+        /// <summary>
+        /// Update the CSV file
+        /// </summary>
+        public void UpdateCSV()
+        {
+            string[] jobData =
+            {
+            SystemHandler.instance.currentJob.guid.ToString(),
+            SystemHandler.instance.currentJob.jobName,
+            SystemHandler.instance.currentJob.gravityValue.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.rotationalAlgorithm.ToString(),
+            SystemHandler.instance.currentJob.status.ToString(),
+            SystemHandler.instance.currentJob.startTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.endTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.abortTime.ToString(CultureInfo.InvariantCulture)
+            };
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(string.Join(",", jobData));
+
+            string pathName = Application.dataPath + "/Data/" +
+                              SystemHandler.instance.currentJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
+                              "_" + SystemHandler.instance.currentJob.jobName + ".csv";
+
+            string[] lines = File.ReadAllLines(pathName);
+            lines[1] = string.Join(",", jobData);
+            File.WriteAllLines(pathName, lines);
+        }
+
     }
 }

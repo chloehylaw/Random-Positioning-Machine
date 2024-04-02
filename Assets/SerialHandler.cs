@@ -7,13 +7,10 @@ public class SerialHandler : MonoBehaviour
 {
     Controller controller;
     SerialPort port;
-    SerialPort port2;
-    SerialPort port3;
     bool hasController = false;
     public static SerialHandler instance;
     public string bufferedMessage;
     public int tick;
-    public int debug;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +27,11 @@ public class SerialHandler : MonoBehaviour
         }
         StartCoroutine(WaitTillEndOfFrame());
 
-        port = new SerialPort("COM1", 4800, Parity.None, 8, StopBits.One);
-        port2 = new SerialPort("COM2", 4800, Parity.None, 8, StopBits.One);
-        port3 = new SerialPort("COM3", 4800, Parity.None, 8, StopBits.One);
+        port = new SerialPort("COM1", 4800);
+        port.DtrEnable = true;
+        port.RtsEnable = false;
         port.Open();
-        port2.Open();
-        port3.Open();
+
     }
 
     IEnumerator WaitTillEndOfFrame()
@@ -69,23 +65,18 @@ public class SerialHandler : MonoBehaviour
             var innerPWM = 255 - (int)(Mathf.Abs(inner / 40f) * 255);
 
             bufferedMessage = (Mathf.Sign(outer) > 0 ? "+" : "-") + outerPWM + ", " 
-                + (Mathf.Sign(inner) > 0 ? "+" : "-") + innerPWM;
+                + (Mathf.Sign(inner) > 0 ? "+" : "-") + innerPWM + '\n';
         }
 
 
         if (tick >= 0.1f/Time.fixedDeltaTime)
         {
-            if (bufferedMessage != "")
+            if (bufferedMessage != string.Empty)
             {
-                debug++;
-                if(debug%3==0)
-                    port.WriteLine(bufferedMessage);
-                if (debug % 3 == 1)
-                    port2.WriteLine(bufferedMessage);
-                if (debug % 3 == 2)
-                    port3.WriteLine(bufferedMessage);
+                byte[] byteMessage = System.Text.Encoding.UTF8.GetBytes(bufferedMessage);
+                port.Write(byteMessage, 0, byteMessage.Length);
                 tick = 0;
-                bufferedMessage = "";
+                bufferedMessage = string.Empty;
             }
 
         }
@@ -94,7 +85,5 @@ public class SerialHandler : MonoBehaviour
     private void OnApplicationQuit()
     {
         port.Close();
-        port2.Close();
-        port3.Close();
     }
 }

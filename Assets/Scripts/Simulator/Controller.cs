@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour
     /// Starts all motors.
     /// </summary>
     /// <param name="resetInterval">Set to true if you wish to reset the random walk interval</param>
-    protected void StartMotors(bool resetInterval = false)
+    public void StartMotors(bool resetInterval = false)
     {
         foreach (Motor motor in motors)
         {
@@ -45,7 +45,7 @@ public class Controller : MonoBehaviour
     /// <summary>
     /// Stops all motors.
     /// </summary>
-    protected void StopMotors()
+    public void StopMotors()
     {
         foreach (Motor motor in motors)
         {
@@ -76,7 +76,7 @@ public class Controller : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (DateTime.Now.CompareTo(SystemHandler.instance.endDate) > 0)
+        if (DateTime.Now.CompareTo(SystemHandler.instance.currentJob.expectedEndTime) > 0)
         {
             StopMotors();
             SystemHandler.instance.HandleStop();
