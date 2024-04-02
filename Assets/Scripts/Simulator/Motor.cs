@@ -23,7 +23,7 @@ public class Motor : MonoBehaviour
     /// <summary>
     /// Flag for if machine wants to not move
     /// </summary>
-    public bool stop;
+    [SerializeField] private bool stop;
     /// <summary>
     /// Amount of ticks until direction change
     /// </summary>
@@ -82,6 +82,7 @@ public class Motor : MonoBehaviour
         {
             speed = RPM;
             degreesPerTick = speed * (360f * Time.fixedDeltaTime / 60f);
+            desiredSpeed = degreesPerTick * Mathf.Sign(desiredSpeed);
         }
     }
     /// <summary>

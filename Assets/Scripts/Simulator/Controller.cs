@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Ports;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,7 +13,6 @@ public class Controller : MonoBehaviour
     public Motor innerMotor;
     public float innerMotorSpeed;
     protected List<Motor> motors;
-    SerialPort port;
     protected bool paused = false;
     protected bool recordData = false;
 
@@ -29,16 +27,15 @@ public class Controller : MonoBehaviour
             innerMotor
         };
         outerMotor.SetSpeed(nominalRPM);
-        innerMotor.SetSpeed(nominalRPM*Mathf.Sqrt(3)/2f);
+        innerMotor.SetSpeed(nominalRPM * Mathf.Sqrt(3) / 2f);
         StartMotors(true);
-        port = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One);
-        port.Open();
+
     }
     /// <summary>
     /// Starts all motors.
     /// </summary>
     /// <param name="resetInterval">Set to true if you wish to reset the random walk interval</param>
-    protected void StartMotors(bool resetInterval = false)
+    public void StartMotors(bool resetInterval = false)
     {
         foreach (Motor motor in motors)
         {
@@ -48,7 +45,7 @@ public class Controller : MonoBehaviour
     /// <summary>
     /// Stops all motors.
     /// </summary>
-    protected void StopMotors()
+    public void StopMotors()
     {
         foreach (Motor motor in motors)
         {
@@ -79,7 +76,7 @@ public class Controller : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (DateTime.Now.CompareTo(SystemHandler.instance.endDate) > 0)
+        if (DateTime.Now.CompareTo(SystemHandler.instance.currentJob.expectedEndTime) > 0)
         {
             StopMotors();
             SystemHandler.instance.HandleStop();
@@ -87,10 +84,6 @@ public class Controller : MonoBehaviour
         if (SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.Paused)
         {
             Pause();
-        }
-        if (outerMotorSpeed != outerMotor.currentSpeed || innerMotorSpeed != innerMotor.currentSpeed)
-        {
-            //port.WriteLine((outerMotor.currentSpeed / (360f * Time.fixedDeltaTime / 60f)).ToString() + ", " + (innerMotor.currentPosition / (360f * Time.fixedDeltaTime / 60f)).ToString());
         }
         outerMotorSpeed = outerMotor.currentSpeed;
         innerMotorSpeed = innerMotor.currentSpeed;
@@ -103,8 +96,5 @@ public class Controller : MonoBehaviour
         recordData = false;
     }
 
-    private void OnApplicationQuit()
-    {
-        port.Close();
-    }
+
 }

@@ -35,7 +35,6 @@ public class FlexibleStaticIntervals : Controller
     private new void FixedUpdate()
     {
         minimumTicks--;
-        base.FixedUpdate();
         if (accelerometer.currentAve < g * 1000f && !isStatic)
         {
             if (minimumTicks < 0)
@@ -45,6 +44,7 @@ public class FlexibleStaticIntervals : Controller
                     motor.Stop();
                 }
                 ResetTicks();
+                isStatic = true;
             }
         }
         else if (accelerometer.currentAve > g * 1000f && isStatic)
@@ -56,7 +56,9 @@ public class FlexibleStaticIntervals : Controller
                     motor.RandomWalk();
                 }
                 ResetTicks();
+                isStatic = false;
             }
         }
+        base.FixedUpdate();
     }
 }

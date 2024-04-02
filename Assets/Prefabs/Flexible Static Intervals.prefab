@@ -119,7 +119,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8db7a08eb54d80d4b8cd8f91db6847e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240918619468318457}
   - component: {fileID: 6518077162426684653}
+  - component: {fileID: 6878694387465158819}
   m_Layer: 0
   m_Name: Directional Light (3)
   m_TagString: Untagged
@@ -256,6 +257,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6878694387465158819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217616292291887025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ac502337bdcf45802fe5a8930f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4800760807577762109}
+  light: {fileID: 0}
+  rand: 0
+  tick: 0
 --- !u!1 &1254676188310461820
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637353236012057467}
   - component: {fileID: 3196411548533018260}
+  - component: {fileID: 5467258859085654149}
   m_Layer: 0
   m_Name: Directional Light (2)
   m_TagString: Untagged
@@ -297,10 +315,10 @@ Light:
   m_GameObject: {fileID: 1254676188310461820}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.74509805, b: 0.04938182, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1
   m_Range: 1979.6
   m_SpotAngle: 66
   m_InnerSpotAngle: 21.80208
@@ -350,6 +368,22 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &5467258859085654149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254676188310461820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0ac502337bdcf45802fe5a8930f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4800760807577762109}
+  light: {fileID: 0}
+  rand: 0
+  tick: 0
 --- !u!1 &1508073069574306122
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +668,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8db7a08eb54d80d4b8cd8f91db6847e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1075,7 +1109,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 379ceca58a1815043a5803061c7a48c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

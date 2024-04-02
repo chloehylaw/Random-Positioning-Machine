@@ -14,9 +14,10 @@ namespace Control_Page
         public static DataHandler instance;
         public GameObject alertPanel;
         public TMP_Text alertMessage;
-        
+
         private Job currentJob;
-    
+
+
         public TimeRow timeRow;
         public JobRow jobRow;
         public GravityRow gravityRow;
@@ -28,7 +29,7 @@ namespace Control_Page
         void Start()
         {
             alertPanel.gameObject.SetActive(false);
-            
+
             if (FindObjectsOfType<DataHandler>().Length == 1)
             {
                 DontDestroyOnLoad(gameObject);
@@ -45,7 +46,7 @@ namespace Control_Page
             yield return new WaitForEndOfFrame();
             currentJob = SystemHandler.instance.currentJob;
         }
-        
+
         public void UpdateCurrentJob()
         {
             StartCoroutine(WaitForFrame());
@@ -64,10 +65,10 @@ namespace Control_Page
         {
             // set current job and set the status to abort
             currentJob.status = Job.JobStatus.Abort;
-            
+
             // update the current job CSV file
             UpdateCSV();
-            
+
             alertPanel.gameObject.SetActive(false);
             CreateCSVFile();
         }
@@ -76,7 +77,7 @@ namespace Control_Page
         {
             alertPanel.gameObject.SetActive(false);
         }
-        
+
         /// <summary>
         /// Create a new CSV file for the created new job
         /// </summary>
@@ -95,32 +96,33 @@ namespace Control_Page
                 inputJob.expectedEndTime = SystemHandler.instance.endDate;
                 inputJob.endTime = DateTime.MinValue;
                 inputJob.abortTime = DateTime.MinValue;
-                
+
+
                 SystemHandler.instance.currentJob = inputJob;
 
                 StringBuilder sb = new StringBuilder();
                 string[] columnNames =
                 {
-                    "GUID", 
-                    "Job Name", 
-                    "Gravity Value (g)", 
-                    "Rotational Algorithm", 
-                    "Status", 
-                    "Start Time", 
+                    "GUID",
+                    "Job Name",
+                    "Gravity Value (g)",
+                    "Rotational Algorithm",
+                    "Status",
+                    "Start Time",
                     "Expected End Time",
-                    "End Time", 
+                    "End Time",
                     "Abort Time"
                 };
                 sb.AppendLine(string.Join(",", columnNames));
 
                 string[] jobData =
                 {
-                    inputJob.guid.ToString(), 
-                    inputJob.jobName, 
-                    inputJob.gravityValue.ToString(CultureInfo.InvariantCulture), 
-                    inputJob.rotationalAlgorithm.ToString(), 
-                    inputJob.status.ToString(), 
-                    inputJob.startTime.ToString(CultureInfo.InvariantCulture), 
+                    inputJob.guid.ToString(),
+                    inputJob.jobName,
+                    inputJob.gravityValue.ToString(CultureInfo.InvariantCulture),
+                    inputJob.rotationalAlgorithm.ToString(),
+                    inputJob.status.ToString(),
+                    inputJob.startTime.ToString(CultureInfo.InvariantCulture),
                     inputJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
                     inputJob.endTime.ToString(CultureInfo.InvariantCulture),
                     inputJob.abortTime.ToString(CultureInfo.InvariantCulture)
@@ -128,10 +130,10 @@ namespace Control_Page
                 sb.AppendLine(string.Join(",", jobData));
 
                 //string pathName = Application.dataPath + "/Data/" + inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(",", "") + "_" + inputJob.jobName + ".csv";
-                string pathName = Application.dataPath + "/Data/" + 
-                                  inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") + 
+                string pathName = Application.dataPath + "/Data/" +
+                                  inputJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
                                   "_" + inputJob.jobName + ".csv";
-                
+
                 if (File.Exists(pathName))
                 {
                     string[] lines = File.ReadAllLines(pathName);
@@ -152,7 +154,6 @@ namespace Control_Page
                 //           (algorithmRow.AttemptStart() ? "" : "algorithm "));
             }
         }
-        
         /// <summary>
         /// Update the CSV file
         /// </summary>
@@ -160,23 +161,23 @@ namespace Control_Page
         {
             string[] jobData =
             {
-                currentJob.guid.ToString(),
-                currentJob.jobName,
-                currentJob.gravityValue.ToString(CultureInfo.InvariantCulture),
-                currentJob.rotationalAlgorithm.ToString(),
-                currentJob.status.ToString(),
-                currentJob.startTime.ToString(CultureInfo.InvariantCulture),
-                currentJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
-                currentJob.endTime.ToString(CultureInfo.InvariantCulture),
-                currentJob.abortTime.ToString(CultureInfo.InvariantCulture)
+            SystemHandler.instance.currentJob.guid.ToString(),
+            SystemHandler.instance.currentJob.jobName,
+            SystemHandler.instance.currentJob.gravityValue.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.rotationalAlgorithm.ToString(),
+            SystemHandler.instance.currentJob.status.ToString(),
+            SystemHandler.instance.currentJob.startTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.expectedEndTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.endTime.ToString(CultureInfo.InvariantCulture),
+            SystemHandler.instance.currentJob.abortTime.ToString(CultureInfo.InvariantCulture)
             };
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(string.Join(",", jobData));
 
             string pathName = Application.dataPath + "/Data/" +
-                              currentJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
-                              "_" + currentJob.jobName + ".csv";
+                              SystemHandler.instance.currentJob.startTime.ToString("yy-MM-dd HH-mm-ss").Replace(" ", "_") +
+                              "_" + SystemHandler.instance.currentJob.jobName + ".csv";
 
             string[] lines = File.ReadAllLines(pathName);
             lines[1] = string.Join(",", jobData);

@@ -14,7 +14,6 @@ public class TwoVelocities : Controller
 
     new void Start()
     {
-        Time.timeScale = 2.0f;
         base.Start();
         g = SystemHandler.instance.gravity / SystemHandler.instance.localG;
         foreach (Motor motor in motors)
@@ -27,7 +26,6 @@ public class TwoVelocities : Controller
     private new void FixedUpdate()
     {
         tick++;
-        base.FixedUpdate();
         if (accelerometer.totalForce.y < 0)
         {
             ChangeMotorSpeeds(nominalRPM * speedFactorWhenInverted);
@@ -40,5 +38,6 @@ public class TwoVelocities : Controller
         {
             speedFactorWhenInverted *= accelerometer.currentAve / (g*SystemHandler.instance.localG*1000f);
         }
+        base.FixedUpdate();
     }
 }

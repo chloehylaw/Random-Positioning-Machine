@@ -1,4 +1,6 @@
+using Control_Page;
 using System;
+using System.Collections;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -27,6 +29,15 @@ public class HomePage : MonoBehaviour
 
     public void UpdateCurrentJob()
     {
+        clickedPause = false;
+        clickedResume = false;
+        clickedStop = false;
+        StartCoroutine(WaitForFrame());
+    }
+
+    IEnumerator WaitForFrame()
+    {
+        yield return new WaitForEndOfFrame();
         currentJob = SystemHandler.instance.currentJob;
     }
 
@@ -36,7 +47,6 @@ public class HomePage : MonoBehaviour
         clickedResume = false;
         clickedStop = false;
     }
-    
     void Update()
     {
         currentTime = DateTime.Now;
@@ -67,6 +77,7 @@ public class HomePage : MonoBehaviour
         currentJob.pauseTime = DateTime.Now;
         clickedPause = true;
         clickedResume = false;
+        SystemHandler.instance.HandlePause();
     }
 
     /// <summary>
@@ -78,6 +89,7 @@ public class HomePage : MonoBehaviour
         currentJob.resumeTime = DateTime.Now;
         clickedPause = false;
         clickedResume = true;
+        SystemHandler.instance.HandleResume();
     }
 
     /// <summary>
@@ -89,7 +101,8 @@ public class HomePage : MonoBehaviour
         currentJob.status = Job.JobStatus.Abort;
         currentJob.abortTime = DateTime.Now;
         clickedStop = true;
-        Control_Page.DataHandler.instance.UpdateCSV();
+        DataHandler.instance.UpdateCSV();
+        SystemHandler.instance.HandleStop();
     }
 
     /// <summary>
@@ -121,10 +134,10 @@ public class HomePage : MonoBehaviour
     /// </returns>
     private string EvaluateRemainingTime()
     {
-        string newRemainingTime = null;
         DateTime expectedEndTime = Convert.ToDateTime(SystemHandler.instance.currentJob.expectedEndTime);
+        string newRemainingTime = "";
         //Debug.Log(expectedEndTime);
-        
+
         if (clickedPause)
         {
             newRemainingTime = "";
@@ -155,7 +168,7 @@ public class HomePage : MonoBehaviour
         if (clickedResume)
         {
             newExpectedEndTime = expectedEndTime.Add(addedTime).ToString("G");
-            Control_Page.DataHandler.instance.UpdateCSV();
+            DataHandler.instance.UpdateCSV();
         }
         else
         {
@@ -165,5 +178,4 @@ public class HomePage : MonoBehaviour
         return newExpectedEndTime;
     }
 
-    
 }
