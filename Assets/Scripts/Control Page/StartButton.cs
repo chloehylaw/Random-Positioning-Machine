@@ -8,6 +8,7 @@ public class StartButton : MonoBehaviour
     public GravityRow gravityRow;
     public AlgorithmRow algorithmRow;
     public JobRow jobRow;
+    public JobListTable jobListTable;
     
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,15 @@ public class StartButton : MonoBehaviour
 
     public void TryStart()
     {
-        if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
+        if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart())
+        //if (timeRow.AttemptStart() &&  gravityRow.AttemptStart() && algorithmRow.AttemptStart() && jobRow.AttemptStart())
         {
-            Debug.Log("changingscene");
+            //Debug.Log("changingscene");
             SystemHandler.instance.gravity = gravityRow.DesiredGravity;
             SystemHandler.instance.endDate = timeRow.DesiredDateEnd;
             SystemHandler.instance.algorithm = algorithmRow.DesiredAlgorithm;
             SystemHandler.instance.HandleStart();
+            jobListTable.ControlPageStart();
         }
     }
 }

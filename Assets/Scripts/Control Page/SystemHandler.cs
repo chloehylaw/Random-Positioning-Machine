@@ -129,25 +129,25 @@ public class SystemHandler : MonoBehaviour
     }
 
     public void HandleStart()
-    {
-        DataHandler.instance.CreateCSVFile();
+    {        
+        DataHandler.instance.CheckRunningJob();
         if (algorithm == RotationalAlgorithm.TwoVelocities)
         {
             currentScene = Instantiate(TwoVelocitiesPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FlexibleStaticIntervals)
         {
             currentScene = Instantiate(FlexibleStaticIntervalsPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         else if (algorithm == RotationalAlgorithm.FixedStaticIntervals)
         {
             currentScene = Instantiate(FixedStaticIntervalsPrefab);
             currentController = FindObjectOfType<Controller>();
-            onControllerLoaded(currentController);
+            //onControllerLoaded(currentController);
         }
         currentJobState = CurrentJobStateEnum.Normal;
     }

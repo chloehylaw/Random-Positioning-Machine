@@ -1,0 +1,2 @@
+GUID,Job Name,Gravity Value (g),Rotational Algorithm,Status,Start Time,Expected End Time,End Time,Abort Time
+fb903fda-ed7b-4edb-a8d5-1615cac7af7a,fhfh,6,TwoVelocities,Running,03/30/2024 17:25:36,03/31/2024 17:25:30,01/01/0001 00:00:00,01/01/0001 00:00:00

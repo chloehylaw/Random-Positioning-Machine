@@ -19,6 +19,7 @@ public class Job : MonoBehaviour
     public DateTime endTime;
     public DateTime abortTime;
 
+
     // handling meta data for pause and resume
     public DateTime pauseTime;
     public DateTime resumeTime;

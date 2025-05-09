@@ -27,7 +27,7 @@ public class Controller : MonoBehaviour
             innerMotor
         };
         outerMotor.SetSpeed(nominalRPM);
-        innerMotor.SetSpeed(nominalRPM*Mathf.Sqrt(3)/2f);
+        innerMotor.SetSpeed(nominalRPM * Mathf.Sqrt(3) / 2f);
         StartMotors(true);
 
     }
@@ -79,13 +79,12 @@ public class Controller : MonoBehaviour
         if (DateTime.Now.CompareTo(SystemHandler.instance.currentJob.expectedEndTime) > 0)
         {
             StopMotors();
-            SystemHandler.instance.HandleStop();
+            SystemHandler.instance.HandleStop(true);
         }
         if (SystemHandler.instance.currentJobState == SystemHandler.CurrentJobStateEnum.Paused)
         {
             Pause();
         }
-
         outerMotorSpeed = outerMotor.currentSpeed;
         innerMotorSpeed = innerMotor.currentSpeed;
     }

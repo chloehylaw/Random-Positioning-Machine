@@ -10,6 +10,6 @@ public class CurrentTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime.text = DateTime.Now.ToString();
+        currentTime.text = DateTime.Now.ToString("g");
     }
 }

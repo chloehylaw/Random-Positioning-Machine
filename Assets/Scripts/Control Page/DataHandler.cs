@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Globalization;
+using System.Linq;
 using System.IO;
 using System.Text;
 using TMPro;
@@ -10,6 +12,11 @@ namespace Control_Page
     public class DataHandler : MonoBehaviour
     {
         public static DataHandler instance;
+        public GameObject alertPanel;
+        public TMP_Text alertMessage;
+
+        //private Job currentJob;
+
 
         public TimeRow timeRow;
         public JobRow jobRow;
@@ -21,6 +28,8 @@ namespace Control_Page
 
         void Start()
         {
+            alertPanel.gameObject.SetActive(false);
+
             if (FindObjectsOfType<DataHandler>().Length == 1)
             {
                 DontDestroyOnLoad(gameObject);
@@ -30,6 +39,49 @@ namespace Control_Page
             {
                 Destroy(gameObject);
             }
+        }
+
+        IEnumerator WaitForFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            //currentJob = SystemHandler.instance.currentJob;
+        }
+
+        public void UpdateCurrentJob()
+        {
+            StartCoroutine(WaitForFrame());
+        }
+
+        public void CheckRunningJob()
+        {
+            if (SystemHandler.instance.currentJob.status == Job.JobStatus.Running)
+            {
+                Debug.Log("Check Bad");
+                alertPanel.gameObject.SetActive(true);
+                alertMessage.text = "Do you want to abort " + SystemHandler.instance.currentJob.jobName + " job and start " + jobRow.GetJobTitle() + " job?";
+            }
+            else
+            {
+                Debug.Log("Here check good");
+                CreateCSVFile();
+            }
+        }
+
+        public void ClickYesButton()
+        {
+            // set current job and set the status to abort
+            SystemHandler.instance.currentJob.status = Job.JobStatus.Abort;
+
+            // update the current job CSV file
+            UpdateCSV();
+
+            alertPanel.gameObject.SetActive(false);
+            CreateCSVFile();
+        }
+
+        public void ClickCancelButton()
+        {
+            alertPanel.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -50,6 +102,7 @@ namespace Control_Page
                 inputJob.expectedEndTime = SystemHandler.instance.endDate;
                 inputJob.endTime = DateTime.MinValue;
                 inputJob.abortTime = DateTime.MinValue;
+
 
                 SystemHandler.instance.currentJob = inputJob;
 
@@ -107,7 +160,6 @@ namespace Control_Page
                 //           (algorithmRow.AttemptStart() ? "" : "algorithm "));
             }
         }
-
         /// <summary>
         /// Update the CSV file
         /// </summary>
@@ -138,5 +190,6 @@ namespace Control_Page
             File.WriteAllLines(pathName, lines);
         }
 
+        
     }
 }

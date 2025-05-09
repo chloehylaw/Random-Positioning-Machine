@@ -29,7 +29,7 @@ public class HomePage : MonoBehaviour
 
     public void UpdateCurrentJob()
     {
-        clickedPause = false; 
+        clickedPause = false;
         clickedResume = false;
         clickedStop = false;
         StartCoroutine(WaitForFrame());
@@ -47,7 +47,6 @@ public class HomePage : MonoBehaviour
         clickedResume = false;
         clickedStop = false;
     }
-
     void Update()
     {
         currentTime = DateTime.Now;
@@ -178,6 +177,5 @@ public class HomePage : MonoBehaviour
 
         return newExpectedEndTime;
     }
-
 
 }
